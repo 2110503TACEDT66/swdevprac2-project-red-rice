@@ -7,14 +7,14 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
-    },
   },
   plugins: [],
+  colors: {
+    "redrice-red": "#FF3636",
+    "redrice-yellow": "#F9A826",
+    "redrice-light-yellow": "#FDC15D",
+    "redrice-green": "#1DA1F2",
+    "redrice-blue" : "1DA1F2",
+  },
 };
 export default config;
