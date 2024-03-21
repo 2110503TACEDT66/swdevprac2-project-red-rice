@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Card({id,name,role,email,tel,picture}:{id:string,name:string,role:string,email:string,tel:string,picture?:string}){
     return(
         <div className="h-[80%] w-[80%] rounded-lg shadow-md m-1 flex flex-row">
-            <div className='w-[10px] h-[10px] relative rounded-full  p-5 m-3 border-solid border-2 border-slate-400 self-center '>
+            <div className='w-[55px] h-[55px] relative rounded-full  p-7 m-3 ml-5 mr-5 border-solid border-2 border-slate-400 self-center '>
                 <Image src={ picture || '/img/user/user1.png'}
                 alt='Product Picture'
                 fill={true}
