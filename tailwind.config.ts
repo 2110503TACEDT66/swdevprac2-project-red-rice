@@ -7,14 +7,17 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    extend: {
+      colors: {
+        "redrice-red": "#FF3636",
+        "redrice-yellow": "#F9A826",
+        "redrice-light-yellow": "#FDC15D",
+        "redrice-green": "#1DA1F2",
+        "redrice-blue": "#1DA1F2", // Make sure the color value starts with '#'
+      },
+    },
   },
   plugins: [],
-  colors: {
-    "redrice-red": "#FF3636",
-    "redrice-yellow": "#F9A826",
-    "redrice-light-yellow": "#FDC15D",
-    "redrice-green": "#1DA1F2",
-    "redrice-blue" : "1DA1F2",
-  },
 };
+
 export default config;
