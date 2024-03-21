@@ -1,8 +1,8 @@
 
 export default function Footer(){
-    const start = 125
+    const start = 14
     const page = 7
-    const total = 1300
+    const total = 40
     return (
         <div className="h-[70px] w-full  mt-2 flex flex-row justify-between">
             <div className="h-[100%] w-[45%]   ">
