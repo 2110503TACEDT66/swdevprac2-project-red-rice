@@ -2,7 +2,7 @@ import React from 'react';
 import RegisterForm from '@/components/auth/RegisterForm';
 import EatingBanner from '/public/img/eating-banner.svg';
 import Image from 'next/image';
-
+import Link from 'next/link';
 const RegisterPage = () => {
     return (
         <main className="flex justify-center">
@@ -35,11 +35,11 @@ const RegisterPage = () => {
                 <h2 className="text-4xl font-bold">Create Account</h2>
                 <div className="flex flex-col items-center space-y-12">
                     <RegisterForm />
-                    <span className="text-gray-400 text-xl font-light">
-                        Already Have an account?
-                        <span className="text-redrice-light-yellow cursor-pointer hover:underline">
+                    <span className="text-gray-400 text-xl font-light space-x-2">
+                        <span>Already Have an account?</span>
+                        <Link href = "/auth/login"className="text-redrice-light-yellow cursor-pointer hover:underline">
                             Sign in
-                        </span>
+                        </Link>
                     </span>
                 </div>
             </section>
