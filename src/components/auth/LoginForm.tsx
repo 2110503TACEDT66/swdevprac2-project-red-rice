@@ -4,15 +4,10 @@ import GithubLogo from '/public/img/github.svg';
 import TwitterLogo from '/public/img/twitter.svg';
 import InstagramLogo from '/public/img/instagram.svg';
 import Image from 'next/image';
-const RegisterForm = () => {
+const LoginForm = () => {
     return (
         <form className="space-y-10 bg-white rounded-lg mx-auto w-full">
             <div className="flex flex-col space-y-10">
-                <input
-                    className="w-full border-2 border-gray-200 p-3 rounded-lg focus:outline-none focus:border-yellow-500"
-                    type="text"
-                    placeholder="Full Name"
-                />
                 <input
                     className="border-2 border-gray-200 p-3 rounded-lg focus:outline-none focus:border-yellow-500"
                     type="email"
@@ -20,23 +15,18 @@ const RegisterForm = () => {
                 />
                 <input
                     className="border-2 border-gray-200 p-3 rounded-lg focus:outline-none focus:border-yellow-500"
-                    type="tel"
-                    placeholder="Telephone"
-                />
-                <input
-                    className="border-2 border-gray-200 p-3 rounded-lg focus:outline-none focus:border-yellow-500"
                     type="password"
                     placeholder="Password"
                 />
                 <button className="w-full bg-redrice-light-yellow text-white p-3 rounded-full hover:bg-yellow-500 transition duration-300 font-bold text-xl">
-                    Sign Up
+                    Sign In
                 </button>
             </div>
 
             <div className="relative flex items-center justify-center">
                 <hr className="absolute w-full border-t border-gray-300" />
                 <p className="relative bg-white px-3 text-gray-500 text-xl font-light">
-                    Or Sign Up With
+                    Or Sign In With
                 </p>
             </div>
 
@@ -78,4 +68,4 @@ const RegisterForm = () => {
     );
 };
 
-export default RegisterForm;
+export default LoginForm;

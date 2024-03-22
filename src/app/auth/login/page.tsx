@@ -1,30 +1,49 @@
 import React from 'react';
+import RegisterForm from '@/components/auth/LoginForm';
+import EatingBanner from '/public/img/banner.svg';
+import Image from 'next/image';
 
 const RegisterPage = () => {
     return (
-        <>
-            <main className="flex items-center justify-center">
-                <section>
+        <main className="flex justify-center">
+            <section className="bg-white w-4/6 p-40 space-y-12">
+                <h2 className="text-4xl font-bold">Log In to Your Account</h2>
+                <div className="flex flex-col items-center space-y-12">
+                    <RegisterForm />
+                    <span className="text-gray-400 text-xl font-light">
+                        Don't have an account yet?{' '}
+                        <span className="text-redrice-light-yellow cursor-pointer hover:underline">
+                            Sign up
+                        </span>
+                    </span>
+                </div>
+            </section>
+            <section className="bg-redrice-light-yellow w-2/6 p-12 space-y-40">
+                <div className="space-y-40">
                     <header>
-                        <h2>Red Rice</h2>
-                        <p>A restaurant booking platform.</p>
+                        <h2 className="text-2xl font-bold text-white">
+                            Red Rice
+                        </h2>
+                        <p className="text-xs text-white">
+                            A restaurant booking platform.
+                        </p>
                     </header>
                     <section>
-                        <span>
-                            Reserve Your Table for <br></br> an Unforgettable{' '}
-                            <br></br> Dining Experience
+                        <span className="text-5xl font-semibold text-white space-y-4">
+                            <div>Reserve Your Table for</div>
+                            <div>an Unforgettable</div>
+                            <div>Dining Experience</div>
                         </span>
                     </section>
-                </section>
-                <section>
-                    <h2>Create Account</h2>
-
-                    <span>
-                        Already Have an account? <span>Sign in</span>
-                    </span>
-                </section>
-            </main>
-        </>
+                </div>
+                <Image
+                    src={EatingBanner}
+                    alt="Eating Banner"
+                    width={500}
+                    height={500}
+                />
+            </section>
+        </main>
     );
 };
 
