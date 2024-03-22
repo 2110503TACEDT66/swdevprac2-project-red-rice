@@ -12,7 +12,7 @@ const RegisterPage = () => {
                 <div className="flex flex-col items-center space-y-12">
                     <RegisterForm />
                     <span className="text-gray-400 text-xl font-light space-x-2">
-                        <span>Don't have an account yet?</span>
+                        <span>Don&apos;t have an account yet?</span>
                         <Link href = "/auth/register" className="text-redrice-light-yellow cursor-pointer hover:underline">
                             Sign up
                         </Link>
