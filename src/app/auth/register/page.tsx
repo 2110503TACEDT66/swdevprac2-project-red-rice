@@ -36,7 +36,7 @@ const RegisterPage = () => {
                 <div className="flex flex-col items-center space-y-12">
                     <RegisterForm />
                     <span className="text-gray-400 text-xl font-light">
-                        Already Have an account?{' '}
+                        Already Have an account?
                         <span className="text-redrice-light-yellow cursor-pointer hover:underline">
                             Sign in
                         </span>
