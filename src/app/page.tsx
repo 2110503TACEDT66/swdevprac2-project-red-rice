@@ -1,12 +1,14 @@
 import React from 'react';
+import Image from 'next/image';
+import Home from '@/components/Home';
 
-const Home = () => {
+const page = () => {
     return (
-        <main className="flex items-center justify-center">
-            <div>Test font</div>
-            <div className="font-mono text-redrice-red">Test Tailwind</div>
+        <main>
+            <Home/>
         </main>
     );
 };
 
-export default Home;
+export default page;
+
