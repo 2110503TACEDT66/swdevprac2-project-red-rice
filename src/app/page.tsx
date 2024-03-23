@@ -5,9 +5,10 @@ import Home from '@/components/Home';
 const page = () => {
     return (
         <main>
-            <Home />
+            <Home/>
         </main>
     );
 };
 
 export default page;
+
