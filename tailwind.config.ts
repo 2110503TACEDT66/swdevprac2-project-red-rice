@@ -12,7 +12,7 @@ const config: Config = {
                 'redrice-red': '#FF3636',
                 'redrice-yellow': '#F9A826',
                 'redrice-light-yellow': '#FDC15D',
-                'redrice-green': '#1DA1F2',
+                'redrice-green': '#01C114',
                 'redrice-blue': '#1DA1F2', // Make sure the color value starts with '#'
             },
         },
