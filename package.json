@@ -1,67 +1,34 @@
 {
-
-  "name": "redrice-frontend",
-
-  "version": "0.1.0",
-
-  "private": true,
-
-  "scripts": {
-
-    "dev": "next dev",
-
-    "build": "next build",
-
-    "start": "next start",
-
-    "lint": "next lint",
-
-    "prettier": "prettier --write ."
-
-  },
-
-  "dependencies": {
-
-    "@emotion/react": "^11.11.4",
-
-    "@emotion/styled": "^11.11.0",
-
-    "@mui/material": "^5.15.14",
-
-    "next": "14.1.4",
-
-    "react": "^18",
-
-    "react-dom": "^18",
-
-    "react-icons": "^5.0.1",
-
-    "react-router-dom": "^6.22.3"
-
-  },
-
-  "devDependencies": {
-
-    "@types/node": "^20",
-
-    "@types/react": "^18",
-
-    "@types/react-dom": "^18",
-
-    "autoprefixer": "^10.0.1",
-
-    "eslint": "^8",
-
-    "eslint-config-next": "14.1.4",
-
-    "postcss": "^8",
-
-    "prettier": "^3.2.5",
-
-    "tailwindcss": "^3.3.0",
-
-    "typescript": "^5"
-
-  }
-
+    "name": "redrice-frontend",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "prettier": "prettier --write ."
+    },
+    "dependencies": {
+        "@emotion/react": "^11.11.4",
+        "@emotion/styled": "^11.11.0",
+        "@mui/material": "^5.15.14",
+        "next": "14.1.4",
+        "react": "^18",
+        "react-dom": "^18",
+        "react-icons": "^5.0.1",
+        "react-router-dom": "^6.22.3"
+    },
+    "devDependencies": {
+        "@types/node": "^20",
+        "@types/react": "^18",
+        "@types/react-dom": "^18",
+        "autoprefixer": "^10.0.1",
+        "eslint": "^8",
+        "eslint-config-next": "14.1.4",
+        "postcss": "^8",
+        "prettier": "^3.2.5",
+        "tailwindcss": "^3.3.0",
+        "typescript": "^5"
+    }
 }
