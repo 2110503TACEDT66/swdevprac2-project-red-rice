@@ -16,7 +16,7 @@ export default function Card({
     picture?: string;
 }) {
     return (
-        <div className="h-auto w-full rounded-lg shadow-md m-1 flex flex-row">
+        <div className="h-auto w-full rounded-[1rem] shadow-md m-1 flex flex-row border-2 py-3 items-center">
             <div className="w-[55px] h-[55px] relative rounded-full  p-7 m-3 ml-5 mr-5 border-solid border-2 border-slate-400 self-center ">
                 <Image
                     src={picture || '/img/user/user1.png'}
@@ -25,13 +25,13 @@ export default function Card({
                     className="object-cover rounded-full "
                 />
             </div>
-            <div className="flex flex-col w-[100px] h-[10%] m-3 self-center">
+            <div className="flex flex-col w-[100px] h-[10%] self-center">
                 <div className="">{name}</div>
                 <div className="text-slate-400">{role}</div>
             </div>
-            <div className="w-[200px] h-[10%] m-3 self-center ">{email}</div>
-            <div className="w-[100px] h-[10%] m-3  self-center">{tel}</div>
-            <div className="w-[60%] h-[10%] relative right-0  m-3 self-center flex flex-row justify-end ">
+            <div className="w-[200px] h-[10%] self-center ">{email}</div>
+            <div className="w-[100px] h-[10%] self-center">{tel}</div>
+            <div className="w-[60%] h-[10%] relative right-0 self-center flex flex-row justify-end ">
                 <Link
                     href={`../${id}/profile`}
                     className="block h-[10%] w-[150px] text-sm rounded-full bg-redrice-yellow 

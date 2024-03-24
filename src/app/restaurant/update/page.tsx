@@ -1,5 +1,4 @@
 import React from 'react';
-import BackBtn from '@/components/adminmanage/backbtn';
 import { mockRestaurant } from '@/mock/restaurant';
 import { BiPencil } from 'react-icons/bi';
 import Image from 'next/image';
@@ -9,7 +8,6 @@ const CreateReservationPage = () => {
     return (
         <div>
             <header className="flex items-center">
-                <BackBtn></BackBtn>
                 <h2 className="font-semibold text-2xl">
                     Edit {restaurantData.name}
                 </h2>

@@ -1,5 +1,4 @@
 import React from 'react';
-import BackBtn from '@/components/adminmanage/backbtn';
 import { mockRestaurant } from '@/mock/restaurant';
 import Image from 'next/image';
 import Instagram from '/public/img/instagram.svg';
@@ -12,7 +11,6 @@ const RestaurantDetailPage = ({ params }: { params: { id: string } }) => {
     return (
         <div>
             <header className="flex items-center">
-                <BackBtn></BackBtn>
                 <h2 className="font-semibold text-2xl">
                     {restaurantData.name}
                 </h2>
