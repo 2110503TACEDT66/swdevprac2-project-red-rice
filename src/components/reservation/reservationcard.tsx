@@ -1,5 +1,4 @@
 'use client'
-
 import { useReducer, useState } from "react";
 import Image from "next/image";
 import ConfirmDeleteReserve from "../ConfirmDeleteReserve";
@@ -33,7 +32,7 @@ export default function ReservationCard({id,name,table,time,state,picture}:{id:s
     return(
         <div className=" w-[90%] h-full rounded-lg shadow-md m-1 flex flex-row ">
             {resultshow && 
-                <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-30 px-5">
+                <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-30 px-5 z-10">
                 <div className="px-10 py-10 bg-white shadow-lg rounded-[1rem] flex flex-col justify-center items-center">
                     <h1 className='mb-4 text-xl font-bold'>Are you sure for delete Reservation at {name} ?</h1>
                     <div className='flex flex-row gap-3'>
@@ -50,11 +49,11 @@ export default function ReservationCard({id,name,table,time,state,picture}:{id:s
                 className= 'object-cover rounded-lg '
                 />
             </div>
-            <div className='w-[50%] m-1 self-center '>{name}</div> 
+            <div className='w-[50%] m-1 self-center font-semibold'>{name}</div> 
             <div className='w-[50%] relative right-0  m-3 self-center flex flex-row items-center'>
-                <div className='w-[15%] m-3  '>{table} Tables</div> 
-                <div className='w-[15%] m-3  '>{time}</div> 
-                <div className={`w-[22%] h-[5%] self-center m-3 ml-10 ${getBackgroundColor()} p-1 text-white text-center rounded-full text-xl bold shadow-lg `}>{state}</div>
+                <div className='w-[15%] m-3  font-semibold'>{table} Tables</div> 
+                <div className='w-[15%] m-3  font-semibold'>{time}</div> 
+                <div className={`w-[22%] h-[5%] self-center m-3 ml-10 ${getBackgroundColor()} p-1 text-white text-center rounded-full text-xl bold shadow-lg font-semibold`}>{state}</div>
                     <div className="w-[30px] h-[30px]  bg-red-500 rounded-full hover:bg-red-700 m-3 ml-5">
 
                         <div className="w-full h-full flex justify-center items-center " onClick={()=>dispatchshow({type:"show"})}>

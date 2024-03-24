@@ -14,8 +14,8 @@ export default function DonePage({head,detail,path}:{head:string,detail:String,p
                         />
                     </div>
                 </div>
-                    <div className=" text-4xl bold text-center m-3">{head}</div>
-                    <Link href={path} className="hover:underline "><div className="text-center m-3 text-sm text-slate-400">{detail}</div></Link>
+                    <div className=" text-4xl bold text-center m-3 font-semibold">{head}</div>
+                    <Link href={path} className="hover:underline "><div className="text-center m-3 text-sm text-slate-400 font-semibold">{detail}</div></Link>
             </div>
                
  
