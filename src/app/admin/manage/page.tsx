@@ -7,7 +7,6 @@ export default function AdminManage() {
         <main className="pl-12 pr-10 w-full h-auto overflow-y-auto">
             <SubBar />
             <CardPanel />
-            <Footer />
         </main>
     );
 }

@@ -1,13 +1,32 @@
+'use client';
+import React, { useState } from 'react';
 import Card from './card';
 import { mockUser } from '@/mock/user';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 export default function CardPanel() {
     const mockData = mockUser;
+    const [page, setPage] = useState(1);
+    const [limit, setLimit] = useState(10);
+
+    const startIndex = (page - 1) * limit;
+
+    const visibleData = mockData.slice(startIndex, startIndex + limit);
+
+    const totalPages = Math.ceil(mockData.length / limit);
+
+    const handlePageChange = (newPage: any) => {
+        setPage(Math.max(1, Math.min(newPage, totalPages)));
+    };
+
+    const isPreviousDisabled = page === 1;
+    const isNextDisabled = page === totalPages;
 
     return (
-        <div className="w-full h-[85%] flex flex-col items-center mt-5">
-            {mockData.map((item) => (
+        <div className="w-full h-screen flex flex-col items-center mt-5">
+            {visibleData.map((item) => (
                 <Card
+                    key={item.id}
                     id={item.id}
                     name={item.name}
                     role={item.role}
@@ -16,6 +35,39 @@ export default function CardPanel() {
                     picture={item.picture}
                 />
             ))}
+
+            <div className="mt-5 pb-5 flex justify-center items-center">
+                {isPreviousDisabled ? (
+                    <button className="bg-redrice-light-yellow text-white p-3 rounded-full">
+                        <IoIosArrowBack />
+                    </button>
+                ) : (
+                    <button
+                        disabled={isPreviousDisabled}
+                        onClick={() => handlePageChange(page - 1)}
+                        className="bg-redrice-yellow text-white p-3 rounded-full"
+                    >
+                        <IoIosArrowBack />
+                    </button>
+                )}
+
+                <span className="mx-5">
+                    Page {page} of {totalPages}
+                </span>
+                {isNextDisabled ? (
+                    <button className="bg-redrice-light-yellow text-white p-3 rounded-full">
+                        <IoIosArrowForward />
+                    </button>
+                ) : (
+                    <button
+                        disabled={isNextDisabled}
+                        onClick={() => handlePageChange(page + 1)}
+                        className="bg-redrice-yellow text-white p-3 rounded-full"
+                    >
+                        <IoIosArrowForward />
+                    </button>
+                )}
+            </div>
         </div>
     );
 }
