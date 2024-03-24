@@ -1,5 +1,4 @@
 import React from 'react';
-import BackBtn from '@/components/adminmanage/backbtn';
 import { mockRestaurant } from '@/mock/restaurant';
 import Image from 'next/image';
 import Instagram from '/public/img/instagram.svg';
@@ -12,7 +11,6 @@ const RestaurantDetailPage = ({ params }: { params: { id: string } }) => {
     return (
         <div>
             <header className="flex items-center">
-                <BackBtn></BackBtn>
                 <h2 className="font-semibold text-2xl">
                     {restaurantData.name}
                 </h2>
@@ -40,9 +38,7 @@ const RestaurantDetailPage = ({ params }: { params: { id: string } }) => {
                         <section className="space-y-2">
                             <div className="flex space-x-3 items-center">
                                 <BiPhone size={24} />
-                                <p className="text-wrap">
-                                    {restaurantData.phone}
-                                </p>
+                                <p className='text-wrap'>{restaurantData.phone}</p>
                             </div>
                             <div className="flex space-x-3">
                                 <Image
@@ -51,9 +47,7 @@ const RestaurantDetailPage = ({ params }: { params: { id: string } }) => {
                                     width={24}
                                     height={24}
                                 />
-                                <p className="text-wrap">
-                                    {restaurantData.instagram}
-                                </p>
+                                <p className='text-wrap'>{restaurantData.instagram}</p>
                             </div>
                             <div className="flex space-x-3">
                                 <Image
@@ -62,9 +56,7 @@ const RestaurantDetailPage = ({ params }: { params: { id: string } }) => {
                                     width={24}
                                     height={24}
                                 />
-                                <p className="text-wrap">
-                                    {restaurantData.facebook}
-                                </p>
+                                <p className='text-wrap'>{restaurantData.facebook}</p>
                             </div>
                         </section>
                     </section>

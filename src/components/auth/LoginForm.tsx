@@ -26,33 +26,28 @@ const LoginForm = () => {
     };
 
     return (
-        <form
-            onSubmit={handleSubmit}
-            className="space-y-10 bg-white rounded-lg mx-auto w-full"
-        >
+        <form className="space-y-10 bg-white rounded-lg mx-auto w-full">
             <div className="flex flex-col space-y-10">
                 <input
                     className="border-2 border-gray-200 p-3 rounded-lg focus:outline-none focus:border-yellow-500"
                     type="email"
                     placeholder="Email Address"
-                    name="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
                     className="border-2 border-gray-200 p-3 rounded-lg focus:outline-none focus:border-yellow-500"
                     type="password"
                     placeholder="Password"
-                    name="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
                 />
-                <button
-                    type="submit"
-                    className="w-full bg-redrice-light-yellow text-white p-3 rounded-full hover:bg-yellow-500 transition duration-300 font-bold text-xl"
-                >
-                    Sign In
+                <button className="w-full bg-redrice-light-yellow text-white p-3 rounded-full hover:bg-yellow-500 transition duration-300 font-bold text-xl">
+                    Sign Up
                 </button>
+            </div>
+
+            <div className="relative flex items-center justify-center">
+                <hr className="absolute w-full border-t border-gray-300" />
+                <p className="relative bg-white px-3 text-gray-500 text-xl font-light">
+                    Or Sign In With
+                </p>
             </div>
 
             <div className="flex justify-center space-x-8">

@@ -1,23 +1,19 @@
 import { FiSearch } from 'react-icons/fi';
 import BackBtn from '../backbtn';
+
+import Searchbox from '@/components/Searchbox';
+
+
 export default function SubBar() {
     return (
-        <div className="flex flex-row">
-            <BackBtn></BackBtn>
-            <div className="w-[20%] m-5 text-xl self-center">
-                User Management
+        <div className="flex flex-row justify-between items-center flex-wrap">
+            <div className='flex flex-row items-center'>
+                <h1 className="text-3xl md:text-4xl font-semibold">
+                    User Management
+                </h1>
             </div>
-            <div className="w-[80%]  mr-[8%] flex flex-row justify-end">
-                <label htmlFor="Search">
-                    <FiSearch className="relative top-[53px] left-[35px]" />
-                    <input
-                        type="text"
-                        id="Search"
-                        name="Search"
-                        placeholder="Search"
-                        className=" m-5 text-xl flex flex-row rounded-lg bg-slate-50 w-[300px] h-[50px] indent-11 text-slate-800 hover:bg-slate-100"
-                    />
-                </label>
+            <div className="mt-3 md:mt-0 w-full md:w-1/3">
+                <Searchbox />
             </div>
         </div>
     );
