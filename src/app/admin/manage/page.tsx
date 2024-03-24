@@ -4,7 +4,7 @@ import SubBar from '@/components/adminmanage/subbar/subbar';
 import Footer from '@/components/adminmanage/footer/footer';
 export default function AdminManage() {
     return (
-        <main className="w-full h-full relative top-[20px] justify-center overflox-x-hidden">
+        <main className="pl-12 pr-10 w-full h-auto overflow-y-auto">
             <SubBar />
             <CardPanel />
             <Footer />
