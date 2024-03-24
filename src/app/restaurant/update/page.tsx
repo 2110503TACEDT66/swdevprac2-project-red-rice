@@ -1,6 +1,7 @@
 import React from 'react';
 import BackBtn from '@/components/adminmanage/backbtn';
 import { mockRestaurant } from '@/mock/restaurant';
+import { BiPencil } from 'react-icons/bi';
 import Image from 'next/image';
 
 const CreateReservationPage = () => {
@@ -10,20 +11,25 @@ const CreateReservationPage = () => {
             <header className="flex items-center">
                 <BackBtn></BackBtn>
                 <h2 className="font-semibold text-2xl">
-                    Book a Table at {restaurantData.name}
+                    Edit {restaurantData.name}
                 </h2>
             </header>
             <main className="px-44 py-10 flex space-x-16">
                 <section className="w-1/2">
-                    <div className="w-[527px] h-[384px] flex items-center justify-center rounded-2xl bg-gray-200 cursor-pointer">
-                        <h2 className="text-2xl font-semibold text-gray-600">
-                            + upload image
-                        </h2>
+                    <div className="relative w-[527px] h-[384px] rounded-2xl overflow-hidden">
+                        <div className="absolute inset-0 bg-gray-500 opacity-80 flex items-center justify-center z-10">
+                            <BiPencil size={48} className="text-white" />
+                        </div>
+                        <Image
+                            src={restaurantData.image}
+                            alt={restaurantData.name}
+                            layout="fill" 
+                            className="rounded-2xl"
+                        />
                     </div>
                 </section>
                 <section className="rounded-lg p-12 space-y-40 w-1/2 text-lg shadow-lg">
                     <div className="space-y-4">
-                        {/* Restaurant Name input field */}
                         <div>
                             <label
                                 htmlFor="restaurantName"
@@ -40,8 +46,6 @@ const CreateReservationPage = () => {
                                 required
                             />
                         </div>
-
-                        {/* Address input field */}
                         <div>
                             <label
                                 htmlFor="address"
@@ -57,7 +61,6 @@ const CreateReservationPage = () => {
                                 required
                             ></textarea>
                         </div>
-                        {/* Telephone input field */}
                         <div>
                             <label
                                 htmlFor="telephone"
@@ -74,8 +77,6 @@ const CreateReservationPage = () => {
                                 required
                             />
                         </div>
-
-                        {/* Open Time input field */}
                         <div>
                             <label
                                 htmlFor="openTime"
@@ -92,8 +93,6 @@ const CreateReservationPage = () => {
                                 required
                             />
                         </div>
-
-                        {/* Close Time input field */}
                         <div>
                             <label
                                 htmlFor="closeTime"
@@ -111,8 +110,8 @@ const CreateReservationPage = () => {
                             />
                         </div>
                     </div>
-                    <button className="bg-redrice-yellow px-5 py-3 text-white font-semibold rounded-3xl text-xl w-1/2">
-                        Create Restaurant
+                    <button className="bg-redrice-blue px-5 py-3 text-white font-semibold rounded-3xl text-xl w-1/2">
+                        Edit Restaurant
                     </button>
                 </section>
             </main>
