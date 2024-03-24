@@ -3,21 +3,16 @@ import Image from 'next/image';
 import Rating from '@mui/material/Rating';
 import { MdEdit } from 'react-icons/md';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
-interface RestaurantCardProps {
-    id: string;
-    name: string;
-    imageUrl: string;
-}
 
-const RestaurantCard = ({id, name, imageUrl} : RestaurantCardProps) => {
+const RestaurantCard = (index: any) => {
     return (
         <div
-            key={id}
+            key={index}
             className="flex p-2 border-2 rounded-xl mx-2 w-1/2 flex-col shadow-md px-0"
             style={{ minWidth: '300px', maxWidth: '600px' }}
         >
             <Image
-                src={imageUrl}
+                src={'/img/mockRestaurant.png'}
                 alt="restaurant"
                 width={500}
                 height={500}
@@ -25,7 +20,7 @@ const RestaurantCard = ({id, name, imageUrl} : RestaurantCardProps) => {
             />
             <div className="mx-4 flex flex-col justify-between h-full">
                 <div>
-                    <h1 className="text-2xl font-semibold">{name}</h1>
+                    <h1 className="text-2xl font-semibold">Restaurant Name</h1>
                     <p className="text-md text-slate-500">OpenTime-CloseTime</p>
                 </div>
                 <div className="mt-auto mb-4 flex justify-between items-center">

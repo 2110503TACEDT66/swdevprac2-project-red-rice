@@ -38,9 +38,7 @@ const RestaurantDetailPage = ({ params }: { params: { id: string } }) => {
                         <section className="space-y-2">
                             <div className="flex space-x-3 items-center">
                                 <BiPhone size={24} />
-                                <p className="text-wrap">
-                                    {restaurantData.phone}
-                                </p>
+                                <p className='text-wrap'>{restaurantData.phone}</p>
                             </div>
                             <div className="flex space-x-3">
                                 <Image
@@ -49,9 +47,7 @@ const RestaurantDetailPage = ({ params }: { params: { id: string } }) => {
                                     width={24}
                                     height={24}
                                 />
-                                <p className="text-wrap">
-                                    {restaurantData.instagram}
-                                </p>
+                                <p className='text-wrap'>{restaurantData.instagram}</p>
                             </div>
                             <div className="flex space-x-3">
                                 <Image
@@ -60,9 +56,7 @@ const RestaurantDetailPage = ({ params }: { params: { id: string } }) => {
                                     width={24}
                                     height={24}
                                 />
-                                <p className="text-wrap">
-                                    {restaurantData.facebook}
-                                </p>
+                                <p className='text-wrap'>{restaurantData.facebook}</p>
                             </div>
                         </section>
                     </section>
