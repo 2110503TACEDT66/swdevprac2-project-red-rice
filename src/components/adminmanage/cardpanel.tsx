@@ -59,7 +59,7 @@ export default function CardPanel() {
         },
     ];
     return (
-        <div className="w-[100%] h-[85%] flex flex-col items-center ">
+        <div className="w-full h-[85%] flex flex-col items-center ">
             {mockData.map((item) => (
                 // eslint-disable-next-line react/jsx-key
                 <Card

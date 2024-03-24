@@ -16,7 +16,7 @@ export default function Card({
     picture?: string;
 }) {
     return (
-        <div className="h-[80%] w-[80%] rounded-lg shadow-md m-1 flex flex-row">
+        <div className="h-auto w-full rounded-lg shadow-md m-1 flex flex-row">
             <div className="w-[55px] h-[55px] relative rounded-full  p-7 m-3 ml-5 mr-5 border-solid border-2 border-slate-400 self-center ">
                 <Image
                     src={picture || '/img/user/user1.png'}

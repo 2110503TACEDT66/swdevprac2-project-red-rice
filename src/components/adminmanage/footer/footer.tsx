@@ -3,7 +3,7 @@ export default function Footer() {
     const page = 7;
     const total = 40;
     return (
-        <div className="h-[70px] w-full  mt-2 flex flex-row justify-between">
+        <div className="h-auto w-full mt-2 flex flex-row justify-between overflow-hidden">
             <div className="h-[100%] w-[45%]   ">
                 <h3 className="relative top-[25%] left-[10%] text-slate-400">
                     Displaying {page} Out of {total}
