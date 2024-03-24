@@ -6,11 +6,11 @@ import TwitterLogo from '/public/img/twitter.svg';
 import InstagramLogo from '/public/img/instagram.svg';
 import Image from 'next/image';
 import { signIn } from 'next-auth/react';
-
+import { useRouter } from 'next/navigation';
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    const router = useRouter();
     const handleSubmit = async (event: any) => {
         event.preventDefault();
         const result = await signIn("credentials", {
@@ -19,6 +19,9 @@ const LoginForm = () => {
             redirect: false,
         })
         console.log(email, password, result)
+        if (result) {
+            router.push('/restaurant');
+        }
     };
 
     return (
