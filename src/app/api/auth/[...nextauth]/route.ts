@@ -35,7 +35,7 @@ export const authOptions: AuthOptions = {
             token: any;
             user: any;
         }) {
-            session.user = token as any;
+            session.user = token as string;
             return session;
         },
     },
