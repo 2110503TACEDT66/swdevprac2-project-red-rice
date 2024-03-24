@@ -19,7 +19,7 @@ const LoginForm = () => {
                     placeholder="Password"
                 />
                 <button className="w-full bg-redrice-light-yellow text-white p-3 rounded-full hover:bg-yellow-500 transition duration-300 font-bold text-xl">
-                    Sign In
+                    Sign Up
                 </button>
             </div>
 
