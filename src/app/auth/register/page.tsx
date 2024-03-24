@@ -6,7 +6,7 @@ import Link from 'next/link';
 const RegisterPage = () => {
     return (
         <main className="flex justify-center">
-            <section className="bg-redrice-light-yellow w-2/6 p-12 space-y-40">
+            <section className="bg-redrice-light-yellow w-2/6 p-12 space-y-40 hidden md:block">
                 <div className="space-y-40">
                     <header>
                         <h2 className="text-2xl font-bold text-white">
@@ -31,7 +31,7 @@ const RegisterPage = () => {
                     height={500}
                 />
             </section>
-            <section className="bg-white w-4/6 p-40 space-y-12">
+            <section className="bg-white w-full md:w-4/6 p-10 md:p-40 space-y-12">
                 <h2 className="text-4xl font-bold">Create Account</h2>
                 <div className="flex flex-col items-center space-y-12">
                     <RegisterForm />
