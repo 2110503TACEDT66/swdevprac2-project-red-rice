@@ -1,5 +1,5 @@
 'use client';
-import React, { FormEvent, useState } from 'react';
+import React, { useState } from 'react';
 import GoogleLogo from '/public/img/google.svg';
 import GithubLogo from '/public/img/github.svg';
 import TwitterLogo from '/public/img/twitter.svg';
@@ -7,6 +7,7 @@ import InstagramLogo from '/public/img/instagram.svg';
 import Image from 'next/image';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

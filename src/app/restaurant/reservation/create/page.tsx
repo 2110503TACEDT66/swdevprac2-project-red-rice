@@ -2,9 +2,6 @@ import React from 'react';
 import BackBtn from '@/components/adminmanage/backbtn';
 import { mockRestaurant } from '@/mock/restaurant';
 import Image from 'next/image';
-import Instagram from '/public/img/instagram.svg';
-import Twitter from '/public/img/twitter.svg';
-import { BiPhone } from 'react-icons/bi';
 
 const CreateReservationPage = () => {
     const restaurantData = mockRestaurant;

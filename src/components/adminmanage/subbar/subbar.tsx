@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { FiSearch } from 'react-icons/fi';
 import BackBtn from '../backbtn';
 export default function SubBar() {
