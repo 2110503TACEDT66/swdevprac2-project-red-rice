@@ -4,7 +4,7 @@ import NavBar from '@/components/NavBar';
 import '@/app/globals.css';
 import NextAuthProvider from '@/provider/NextAuthProvider';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions } from '@/utils/authOption';
 
 const sourceSans3 = Source_Sans_3({
     // we have 4 options font-light, font-normal, font-semibold, font-bold
