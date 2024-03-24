@@ -79,4 +79,12 @@ export const mockUser = [
         tel: '0922698678',
         picture: '/img/user/user2.jpg',
     },
+    {
+        id: '011',
+        name: 'PunZa007x',
+        role: 'admin',
+        email: 'punza007@gmail.com',
+        tel: '0922698678',
+        picture: '/img/user/user2.jpg',
+    }
 ];
