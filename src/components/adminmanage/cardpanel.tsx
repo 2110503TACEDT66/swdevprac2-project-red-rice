@@ -38,14 +38,14 @@ export default function CardPanel() {
 
             <div className="mt-5 pb-5 flex justify-center items-center">
                 {isPreviousDisabled ? (
-                    <button className="bg-redrice-light-yellow text-white p-3 rounded-full">
+                    <button className="bg-redrice-light-yellow text-white p-2 rounded-full">
                         <IoIosArrowBack />
                     </button>
                 ) : (
                     <button
                         disabled={isPreviousDisabled}
                         onClick={() => handlePageChange(page - 1)}
-                        className="bg-redrice-yellow text-white p-3 rounded-full"
+                        className="bg-redrice-yellow text-white p-2 rounded-full"
                     >
                         <IoIosArrowBack />
                     </button>
@@ -55,14 +55,14 @@ export default function CardPanel() {
                     Page {page} of {totalPages}
                 </span>
                 {isNextDisabled ? (
-                    <button className="bg-redrice-light-yellow text-white p-3 rounded-full">
+                    <button className="bg-redrice-light-yellow text-white p-2 rounded-full">
                         <IoIosArrowForward />
                     </button>
                 ) : (
                     <button
                         disabled={isNextDisabled}
                         onClick={() => handlePageChange(page + 1)}
-                        className="bg-redrice-yellow text-white p-3 rounded-full"
+                        className="bg-redrice-yellow text-white p-2 rounded-full"
                     >
                         <IoIosArrowForward />
                     </button>
