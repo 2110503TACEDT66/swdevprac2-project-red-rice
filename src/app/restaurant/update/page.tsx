@@ -14,21 +14,21 @@ const CreateReservationPage = () => {
                     Edit {restaurantData.name}
                 </h2>
             </header>
-            <main className="px-44 py-10 flex space-x-16">
-                <section className="w-1/2">
-                    <div className="relative w-[527px] h-[384px] rounded-2xl overflow-hidden">
+            <main className="py-10 flex justify-center lg:space-x-16 w-screen flex-wrap lg:flex-nowrap lg:px-44 space-y-10 lg:space-y-0">
+                <section className="w-full lg:w-1/2">
+                    <div className="relative w-full h-[384px] rounded-2xl overflow-hidden">
                         <div className="absolute inset-0 bg-gray-500 opacity-80 flex items-center justify-center z-10">
                             <BiPencil size={48} className="text-white" />
                         </div>
                         <Image
                             src={restaurantData.image}
                             alt={restaurantData.name}
-                            layout="fill" 
+                            layout="fill"
                             className="rounded-2xl"
                         />
                     </div>
                 </section>
-                <section className="rounded-lg p-12 space-y-40 w-1/2 text-lg shadow-lg">
+                <section className="mx-auto rounded-lg p-12 w-full lg:w-1/2 text-lg shadow-lg space-y-10">
                     <div className="space-y-4">
                         <div>
                             <label
@@ -110,7 +110,7 @@ const CreateReservationPage = () => {
                             />
                         </div>
                     </div>
-                    <button className="bg-redrice-blue px-5 py-3 text-white font-semibold rounded-3xl text-xl w-1/2">
+                    <button className="bg-redrice-blue px-5 py-3 text-white font-semibold rounded-3xl text-xl w-full lg:w-1/2 ">
                         Edit Restaurant
                     </button>
                 </section>

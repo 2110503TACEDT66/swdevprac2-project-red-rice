@@ -17,8 +17,8 @@ const RestaurantDetailPage = ({ params }: { params: { id: string } }) => {
                     {restaurantData.name}
                 </h2>
             </header>
-            <main className="px-44 py-10 flex m-0">
-                <section className="w-1/2 ">
+            <main className="py-10 flex justify-center lg:space-x-16 w-screen flex-wrap lg:flex-nowrap lg:px-44 space-y-10 lg:space-y-0">
+                <section className="w-full lg:w-1/2">
                     <Image
                         src={restaurantData.image}
                         alt={restaurantData.name}
@@ -27,7 +27,7 @@ const RestaurantDetailPage = ({ params }: { params: { id: string } }) => {
                         className="rounded-2xl"
                     />
                 </section>
-                <section className="shadow-lg rounded-lg p-12 space-y-20 w-1/2 text-lg">
+                <section className="mx-auto rounded-lg p-12 w-full lg:w-1/2 text-lg shadow-lg space-y-10">
                     <section className="space-y-4">
                         <h2 className="font-semibold text-2xl">Description</h2>
                         <hr className="w-full border-t border-gray-300" />
@@ -40,7 +40,7 @@ const RestaurantDetailPage = ({ params }: { params: { id: string } }) => {
                         <section className="space-y-2">
                             <div className="flex space-x-3 items-center">
                                 <BiPhone size={24} />
-                                <p>{restaurantData.phone}</p>
+                                <p className='text-wrap'>{restaurantData.phone}</p>
                             </div>
                             <div className="flex space-x-3">
                                 <Image
@@ -49,7 +49,7 @@ const RestaurantDetailPage = ({ params }: { params: { id: string } }) => {
                                     width={24}
                                     height={24}
                                 />
-                                <p>{restaurantData.instagram}</p>
+                                <p className='text-wrap'>{restaurantData.instagram}</p>
                             </div>
                             <div className="flex space-x-3">
                                 <Image
@@ -58,7 +58,7 @@ const RestaurantDetailPage = ({ params }: { params: { id: string } }) => {
                                     width={24}
                                     height={24}
                                 />
-                                <p>{restaurantData.facebook}</p>
+                                <p className='text-wrap'>{restaurantData.facebook}</p>
                             </div>
                         </section>
                     </section>

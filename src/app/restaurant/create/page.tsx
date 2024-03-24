@@ -1,7 +1,6 @@
 import React from 'react';
 import BackBtn from '@/components/adminmanage/backbtn';
 import { mockRestaurant } from '@/mock/restaurant';
-import Image from 'next/image';
 
 const CreateReservationPage = () => {
     const restaurantData = mockRestaurant;
@@ -13,15 +12,15 @@ const CreateReservationPage = () => {
                     Book a Table at {restaurantData.name}
                 </h2>
             </header>
-            <main className="px-44 py-10 flex space-x-16">
-                <section className="w-1/2">
-                    <div className="w-[527px] h-[384px] flex items-center justify-center rounded-2xl bg-gray-200 cursor-pointer">
+            <main className="py-10 flex justify-center lg:space-x-16 w-screen flex-wrap lg:flex-nowrap lg:px-44">
+                <section className="w-full lg:w-1/2">
+                    <div className="w-full h-[384px] flex items-center justify-center rounded-2xl bg-gray-200 cursor-pointer">
                         <h2 className="text-2xl font-semibold text-gray-600">
                             + upload image
                         </h2>
                     </div>
                 </section>
-                <section className="rounded-lg p-12 space-y-40 w-1/2 text-lg shadow-lg">
+                <section className="mx-auto rounded-lg p-12 w-full lg:w-1/2 text-lg shadow-lg space-y-10">
                     <div className="space-y-4">
                         {/* Restaurant Name input field */}
                         <div>
@@ -111,7 +110,7 @@ const CreateReservationPage = () => {
                             />
                         </div>
                     </div>
-                    <button className="bg-redrice-yellow px-5 py-3 text-white font-semibold rounded-3xl text-xl w-1/2">
+                    <button className="bg-redrice-yellow px-5 py-3 text-white font-semibold rounded-3xl text-xl w-full lg:w-1/2 ">
                         Create Restaurant
                     </button>
                 </section>

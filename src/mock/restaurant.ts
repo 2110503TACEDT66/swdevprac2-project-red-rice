@@ -7,7 +7,7 @@ export const mockRestaurant = {
     address:
         'โม โม พาราไดซ์ (โกลด์) สาขา CentralWorld (ชั้น 7)7th FL., 999/9 Rama I Road, Pathumwan, Pathumwan, Bangkok 10330, Thailand',
     phone: '09226986678',
-    instagram: 'https://www.instagram.com/momoparadiseth/',
-    facebook: 'https://www.facebook.com/momoparadisethailand',
+    instagram: 'momoparadiseth',
+    facebook: 'momoparadisethailand',
     email: 'momoparadise@gmail.com',
 };
