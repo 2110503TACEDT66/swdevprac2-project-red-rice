@@ -3,6 +3,7 @@ import React from 'react';
 import RestaurantCard from '@/components/RestaurantCard';
 import { useSession } from 'next-auth/react';
 import { getAllRestaurant } from '@/lib/restaurant';
+import Restaurant  from "@/types/restaurant"
 import { useEffect, useState } from 'react';
 const Restaurants = () => {
     const { data: session } = useSession();

@@ -11,3 +11,5 @@ interface Restaurant {
     facebook: string;
     email: string;
 }
+
+export default Restaurant;
