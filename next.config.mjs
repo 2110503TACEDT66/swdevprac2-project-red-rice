@@ -7,6 +7,11 @@ const nextConfig = {
                 hostname: 'images.immediate.co.uk',
                 port: '',
             },
+            {
+                protocol: 'https',
+                hostname: 's3.inspace.cloud',
+                port: '',
+            }
         ],
     },
     async headers() {

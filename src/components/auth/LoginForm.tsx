@@ -6,31 +6,19 @@ import TwitterLogo from '/public/img/twitter.svg';
 import InstagramLogo from '/public/img/instagram.svg';
 import Image from 'next/image';
 import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const router = useRouter();
 
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: any) => {
         event.preventDefault();
-        signIn("credentials", {
+        const result = await signIn("credentials", {
             email: email,
             password: password,
             redirect: false,
-        }).then((response) => {
-            if (response?.error) {
-                
-                if (response.error === "401") {
-                    console.log("Invalid credentials");
-                } else {
-                   console.log("An error occurred");
-                }
-            }
-            console.log(response);
-        });
-
+        })
+        console.log(email, password, result)
     };
 
     return (

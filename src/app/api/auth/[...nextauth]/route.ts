@@ -2,7 +2,7 @@ import NextAuth, { AuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { login } from '@/lib/auth';
 
-const authOptions: AuthOptions = {
+export const authOptions: AuthOptions = {
     providers: [
         CredentialsProvider({
             name: 'Credentials',
@@ -14,19 +14,13 @@ const authOptions: AuthOptions = {
               if (!credentials) {
                   throw new Error('No credentials provided');
               }
-              const res = await login(credentials.email, credentials.password);
+              const user = await login(credentials.email, credentials.password);
               
-              if (res.status !== 200) {
-                  throw new Error("" + res.status); // Converting status code to string
-              }
           
-              return res.user || null;
+              return user || null;
           }
         }),
     ],
-    pages: {
-        signIn: '/auth/login',
-    },
     session: { strategy: 'jwt' },
     callbacks: {
         async jwt({ token, user }: { token: any; user: any }) {
@@ -47,9 +41,6 @@ const authOptions: AuthOptions = {
     },
 };
 
-const handler = NextAuth({
-    ...authOptions,
-    session: { strategy: 'jwt' },
-});
+const handler = NextAuth(authOptions);
 
-export { handler as GET, handler as POST };
+export { handler as GET, handler as POST, handler as PUT, handler as DELETE};

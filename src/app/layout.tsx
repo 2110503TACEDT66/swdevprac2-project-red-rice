@@ -4,6 +4,8 @@ import NavBar from '@/components/NavBar';
 import '@/app/globals.css';
 import NextAuthProvider from '@/provider/NextAuthProvider';
 import { getServerSession } from 'next-auth';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+
 const sourceSans3 = Source_Sans_3({
     // we have 4 options font-light, font-normal, font-semibold, font-bold
     style: 'normal',
@@ -25,7 +27,8 @@ export default async function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const session = await getServerSession();
+    const session = await getServerSession(authOptions);
+
     return (
         <html lang="en">
             <body className={`${sourceSans3.className} ${MainLayout}`}>
