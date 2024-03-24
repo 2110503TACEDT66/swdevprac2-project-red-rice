@@ -14,7 +14,6 @@ export default function CardReservationPanel(){
                     <CardReservation id={item.id} name={item.name}  time={item.time} picture={item.picture} ></CardReservation>
                 ))
             }
-            
         </div>
     )
 }
