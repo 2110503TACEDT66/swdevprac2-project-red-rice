@@ -1,22 +1,18 @@
+import axios from 'axios';
 import { FormData } from '@/components/auth/RegisterForm';
 
 const register = async (formData: FormData) => {
     try {
-        const response = await fetch(
+        const response = await axios.post(
             'https://redrice-backend-go.onrender.com/api/v1/auth/register',
+            formData, 
             {
-                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
             }
         );
-        if (!response.ok) {
-            throw new Error('Network response was not ok.');
-        }
-        const data = await response.json();
-        return data;
+        return response.data;
     } catch (error) {
         console.error('Registration error:', error);
     }
@@ -24,22 +20,16 @@ const register = async (formData: FormData) => {
 
 const login = async (email: string, password: string) => {
     try {
-        console.log(email, password);
-        const response = await fetch(
+        const response = await axios.post(
             'https://redrice-backend-go.onrender.com/api/v1/auth/signin',
+            { email, password }, 
             {
-                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email, password }),
             }
         );
-        if (!response.ok) {
-            throw new Error('Network response was not ok.');
-        }
-        const data = await response.json();
-        return data;
+        return response.data;
     } catch (error) {
         console.error('Login error:', error);
     }
