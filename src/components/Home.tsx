@@ -3,17 +3,19 @@ import Image from 'next/image';
 
 const Home = () => {
     return (
-        <main className="pl-12 pr-10 w-full h-screen overflow-y-auto flex justify-between flex-wrap bg-cover" style={{backgroundImage: "url('/img/background.png')"}}>
-            
+        <main
+            className="pl-12 pr-10 w-full h-screen overflow-y-auto flex justify-between flex-wrap bg-cover"
+            style={{ backgroundImage: "url('/img/background.png')" }}
+        >
             <div className="mt-5 flex justify-start flex-col">
-            <div className="lg:hidden flex justify-center md:ml-14">
-                <Image
-                    src="/img/restaurant.png"
-                    alt="restaurant"
-                    width={550}
-                    height={550}
-                />
-            </div>
+                <div className="lg:hidden flex justify-center md:ml-14">
+                    <Image
+                        src="/img/restaurant.png"
+                        alt="restaurant"
+                        width={550}
+                        height={550}
+                    />
+                </div>
                 <h1 className="text-3xl md:text-6xl lg:text-7xl font-bold pb-3 lg:pt-32">
                     Discover and Reserve
                 </h1>

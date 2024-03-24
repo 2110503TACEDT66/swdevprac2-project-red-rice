@@ -37,7 +37,10 @@ const RegisterPage = () => {
                     <RegisterForm />
                     <span className="text-gray-400 text-xl font-light space-x-2">
                         <span>Already Have an account?</span>
-                        <Link href = "/auth/login"className="text-redrice-light-yellow cursor-pointer hover:underline">
+                        <Link
+                            href="/auth/login"
+                            className="text-redrice-light-yellow cursor-pointer hover:underline"
+                        >
                             Sign in
                         </Link>
                     </span>
