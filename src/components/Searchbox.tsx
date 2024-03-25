@@ -35,7 +35,7 @@ const Searchbox = () => {
             <FaSearch />
             <input
                 type="text"
-                placeholder="Search restaurants"
+                placeholder="Search"
                 value={searchQuery}
                 onChange={handleSearchQueryChange}
                 className="outline-none border-none ml-3 bg-slate-50"

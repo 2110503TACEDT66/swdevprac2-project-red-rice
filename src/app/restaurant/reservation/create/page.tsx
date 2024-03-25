@@ -1,5 +1,4 @@
 import React from 'react';
-import BackBtn from '@/components/adminmanage/backbtn';
 import { mockRestaurant } from '@/mock/restaurant';
 import Image from 'next/image';
 import Instagram from '/public/img/instagram.svg';
@@ -11,7 +10,6 @@ const CreateReservationPage = () => {
     return (
         <div>
             <header className="flex items-center">
-                <BackBtn></BackBtn>
                 <h2 className="font-semibold text-2xl">
                     Book a Table at {restaurantData.name}
                 </h2>

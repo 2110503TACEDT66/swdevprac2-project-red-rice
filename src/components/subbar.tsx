@@ -1,5 +1,5 @@
 'use client'
-import BackBtn from "./adminmanage/backbtn"
+
 export default function SubBar({text}:{text:string}){
 
     return(

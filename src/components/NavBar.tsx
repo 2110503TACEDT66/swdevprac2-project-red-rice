@@ -38,7 +38,7 @@ const Navbar = () => {
                             <div className="hidden sm:block">
                                 <div className="flex space-x-4 gap-6 items-center justify-center h-full">
                                     <Link
-                                        href="/management"
+                                        href="/admin/manage"
                                         className="rounded-md text-xl lg:text-2xl font-semibold hover:text-redrice-yellow ease-in duration-300"
                                     >
                                         Management
@@ -111,7 +111,7 @@ const Navbar = () => {
                             Profile
                         </Link>
                         <Link
-                            href="/management"
+                            href="/admin/manage"
                             className="text-white block px-3 py-2 text-base font-medium hover:text-black hover:font-bold ease-in duration-300 border-b-2"
                         >
                             Management
