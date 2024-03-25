@@ -1,9 +1,10 @@
 'use client';
-import { useState , useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import { IoClose, IoMenu } from 'react-icons/io5';
+import { getme } from '@/lib/auth';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -18,8 +19,20 @@ const Navbar = () => {
         if (session) {
             setLogin(true);
         }
-    },[]);
-    
+    }, []);
+
+    const [userRole, setUserRole] = useState('');
+
+    useEffect(() => {
+        const fetchUsers = async () => {
+            if (session?.user.token) {
+                const user = await getme(session.user.token);
+                setUserRole(user.role);
+            }
+        };
+        fetchUsers();
+    }, [session]);
+
     return (
         <nav className="relative">
             <div className="mx-auto px-4 md:px-6">
@@ -45,12 +58,14 @@ const Navbar = () => {
                         {login ? (
                             <div className="hidden sm:block">
                                 <div className="flex space-x-4 gap-6 items-center justify-center h-full">
-                                    <Link
-                                        href="/admin/manage"
-                                        className="rounded-md text-xl lg:text-2xl font-semibold hover:text-redrice-yellow ease-in duration-300"
-                                    >
-                                        Management
-                                    </Link>
+                                    {userRole === 'admin' && (
+                                        <Link
+                                            href="/admin/manage"
+                                            className="rounded-md text-xl lg:text-2xl font-semibold hover:text-redrice-yellow ease-in duration-300"
+                                        >
+                                            Management
+                                        </Link>
+                                    )}
                                     <Link
                                         href="/reservation"
                                         className="rounded-md text-xl lg:text-2xl font-semibold hover:text-redrice-yellow ease-in duration-300"
@@ -118,12 +133,14 @@ const Navbar = () => {
                         >
                             Profile
                         </Link>
-                        <Link
-                            href="/admin/manage"
-                            className="text-white block px-3 py-2 text-base font-medium hover:text-black hover:font-bold ease-in duration-300 border-b-2"
-                        >
-                            Management
-                        </Link>
+                        {userRole === 'admin' && (
+                            <Link
+                                href="/admin/manage"
+                                className="text-white block px-3 py-2 text-base font-medium hover:text-black hover:font-bold ease-in duration-300 border-b-2"
+                            >
+                                Management
+                            </Link>
+                        )}
                         <Link
                             href="/reservation"
                             className="text-white block px-3 py-2 text-base font-medium hover:text-black hover:font-bold ease-in duration-300 border-b-2"
