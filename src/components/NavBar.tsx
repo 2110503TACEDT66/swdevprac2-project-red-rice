@@ -55,7 +55,7 @@ const Navbar = () => {
                                     >
                                         Restaurant
                                     </Link>
-                                    <Link href={"/profile/me"}>
+                                    <Link href={"/profile"}>
                                         <Image
                                             src={'/img/profile.svg'}
                                             alt="logo"
