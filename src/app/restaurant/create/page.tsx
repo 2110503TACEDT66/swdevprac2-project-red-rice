@@ -1,24 +1,21 @@
 import React from 'react';
 import { mockRestaurant } from '@/mock/restaurant';
+import UploadImage from '@/components/UploadImage';
 
 const CreateReservationPage = () => {
     const restaurantData = mockRestaurant;
+
     return (
-        <div>
-            <header className="flex items-center">
+        <div className="pl-12 pr-10 w-full h-screen overflow-y-auto">
+            <div className="flex items-center">
                 <h2 className="font-semibold text-2xl">
                     Book a Table at {restaurantData.name}
                 </h2>
-            </header>
-            <main className="py-10 flex justify-center lg:space-x-16 w-screen flex-wrap lg:flex-nowrap lg:px-44">
-                <section className="w-full lg:w-1/2">
-                    <div className="w-full h-[384px] flex items-center justify-center rounded-2xl bg-gray-200 cursor-pointer">
-                        <h2 className="text-2xl font-semibold text-gray-600">
-                            + upload image
-                        </h2>
-                    </div>
-                </section>
-                <section className="mx-auto rounded-lg p-12 w-full lg:w-1/2 text-lg shadow-lg space-y-10">
+            </div>
+            <main className="w-full gap-10 flex flex-row items-center">
+                <UploadImage />
+
+                <form className="rounded-[1rem] p-10 w-1/2 text-lg shadow-lg border-2">
                     <div className="space-y-4">
                         {/* Restaurant Name input field */}
                         <div>
@@ -111,7 +108,7 @@ const CreateReservationPage = () => {
                     <button className="bg-redrice-yellow px-5 py-3 text-white font-semibold rounded-3xl text-xl w-full lg:w-1/2 ">
                         Create Restaurant
                     </button>
-                </section>
+                </form>
             </main>
         </div>
     );
