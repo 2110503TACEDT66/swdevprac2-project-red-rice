@@ -1,15 +1,33 @@
-import React from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Rating from '@mui/material/Rating';
 import { MdEdit } from 'react-icons/md';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
+import { getme } from '@/lib/auth';
+import { useSession } from 'next-auth/react';
+
 interface RestaurantCardProps {
     id: string;
     name: string;
     imageUrl: string;
 }
 
-const RestaurantCard = ({id, name, imageUrl} : RestaurantCardProps) => {
+const RestaurantCard = ({ id, name, imageUrl }: RestaurantCardProps) => {
+    const [userRole, setUserRole] = useState('');
+
+    const { data: session } = useSession();
+
+    useEffect(() => {
+        const fetchRestaurants = async () => {
+            if (session?.user.token) {
+                const user = await getme(session.user.token);
+                setUserRole(user.role);
+            }
+        };
+        fetchRestaurants();
+    }, [session]);
+
     return (
         <div
             key={id}
@@ -34,12 +52,16 @@ const RestaurantCard = ({id, name, imageUrl} : RestaurantCardProps) => {
                         <button className="px-4 py-1 bg-redrice-yellow hover:bg-redrice-light-yellow text-white font-semibold rounded-md">
                             Detail
                         </button>
-                        <button className="rounded-full p-1 bg-redrice-blue text-white hover:bg-blue-400">
-                            <MdEdit />
-                        </button>
-                        <button className="rounded-full p-1 bg-redrice-red text-white hover:bg-red-400">
-                            <RiDeleteBin5Fill />
-                        </button>
+                        {userRole === 'admin' && (
+                            <div>
+                                <button className="rounded-full p-1 bg-redrice-blue text-white hover:bg-blue-400">
+                                    <MdEdit />
+                                </button>
+                                <button className="rounded-full p-1 bg-redrice-red text-white hover:bg-red-400">
+                                    <RiDeleteBin5Fill />
+                                </button>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
