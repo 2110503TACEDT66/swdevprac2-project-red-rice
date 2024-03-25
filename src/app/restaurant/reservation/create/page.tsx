@@ -14,7 +14,7 @@ const CreateReservationPage = () => {
                 Book a Table at {restaurantData.name}
             </h1>
 
-            <main className="w-full lg:gap-10 flex flex-row items-center flex-wrap lg:flex-nowrap lg:h-[700px]">
+            <main className="w-full lg:gap-10 flex flex-row items-center flex-wrap lg:flex-nowrap lg:min-h-[700px]">
                 <div className="w-full lg:w-1/2 flex justify-center mt-5 lg:mt-0">
                     <Image
                         src={restaurantData.image}
