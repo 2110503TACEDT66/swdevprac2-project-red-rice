@@ -13,7 +13,6 @@ export default async function profile({ params }: { params: { id: string } }) {
     }
     const profile =await getUserById(session.user.token,params.id)
     const data =await getReservationByIdUser(session.user.token,params.id)
-    console.log("dataaaaa  : ",data)
     return (
         <main className="">
             <SubBar text="Punza's Profile"/>

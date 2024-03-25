@@ -1,8 +1,5 @@
 'use client'
 import Image from 'next/image';
-import { getServerSession } from "next-auth"
-import { authOptions } from '@/utils/authOption';
-import { useSession } from 'next-auth/react';
 export default function CardProfile({profile}:{profile:any}) 
 
 {

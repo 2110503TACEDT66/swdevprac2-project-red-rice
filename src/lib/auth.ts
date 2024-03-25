@@ -5,7 +5,7 @@ const register = async (formData: FormData) => {
     try {
         const response = await axios.post(
             'https://redrice-backend-go.onrender.com/api/v1/auth/register',
-            formData, 
+            formData,
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ const login = async (email: string, password: string) => {
     try {
         const response = await axios.post(
             'https://redrice-backend-go.onrender.com/api/v1/auth/signin',
-            { email, password }, 
+            { email, password },
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -52,6 +52,7 @@ const getme = async (token: string) => {
         console.error('Get all restaurant error:', error);
     }
 };
+
 const getusers = async (token: string) => {
     try {
         const response = await axios.get(
@@ -70,7 +71,7 @@ const getusers = async (token: string) => {
     }
 };
 
-const getUserById= async (token: string,id:string) => {
+const getUserById = async (token: string, id: string) => {
     try {
         const response = await axios.get(
             `https://redrice-backend-go.onrender.com/api/v1/users/${id}`,
@@ -88,4 +89,4 @@ const getUserById= async (token: string,id:string) => {
     }
 };
 
-export { register, login,getme,getusers,getUserById};
+export { register, login, getme, getusers, getUserById };

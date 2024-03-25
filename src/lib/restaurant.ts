@@ -18,4 +18,35 @@ const getAllRestaurant = async (token: string) => {
     }
 };
 
-export { getAllRestaurant };
+const createRestaurant = async (formData: FormData, token: string) => {
+    try {
+
+        const response = await axios.post('https://redrice-backend-go.onrender.com/api/v1/restaurants', formData, {
+            headers: {
+                'Authorization': `Bearer ${token}`, 
+            },
+        });
+
+        return response.data; 
+    } catch (error) {
+        console.error('Error creating restaurant:', error);
+        throw error; 
+    }
+};
+
+const updateRestaurant = async (id: string, formData: FormData, token: string) => {
+    try {
+        const response = await axios.put(`https://redrice-backend-go.onrender.com/api/v1/restaurants/${id}`, formData, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+        });
+
+        return response.data;
+    } catch (error) {
+        console.error('Failed to update restaurant:', error);
+        throw error;
+    }
+}
+
+export { getAllRestaurant, createRestaurant, updateRestaurant };

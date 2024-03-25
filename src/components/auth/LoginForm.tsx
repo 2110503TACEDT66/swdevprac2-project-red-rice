@@ -1,25 +1,34 @@
 'use client';
-import React, { FormEvent, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import GoogleLogo from '/public/img/google.svg';
 import GithubLogo from '/public/img/github.svg';
 import TwitterLogo from '/public/img/twitter.svg';
 import InstagramLogo from '/public/img/instagram.svg';
 import Image from 'next/image';
 import { signIn } from 'next-auth/react';
-
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    
     const handleSubmit = async (event: any) => {
         event.preventDefault();
         const result = await signIn("credentials", {
             email: email,
             password: password,
             redirect: false,
-        })
-        console.log(email, password, result)
+        });
+        console.log(result)
     };
+    
+    const { data: session } = useSession();
+    const router = useRouter();
+    useEffect(() => {
+        if (session) {
+            router.push('/');
+        }
+    },[]);
 
     return (
         <form

@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react';
 const Restaurants = () => {
     const { data: session } = useSession();
     const [restaurants, setRestaurants] = useState([]);
-
     useEffect(() => {
         const fetchRestaurants = async () => {
             if (session?.user.token) {

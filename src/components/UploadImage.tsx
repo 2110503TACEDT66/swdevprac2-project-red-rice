@@ -1,16 +1,20 @@
 'use client';
 import React, { ChangeEvent, useState } from 'react';
-import { mockRestaurant } from '@/mock/restaurant';
 
-const UploadImage = () => {
-    const [image, setImage] = useState<string | null>(null);
+interface UploadImageProps {
+    onFileSelect: (file: File) => void;
+}
+
+const UploadImage: React.FC<UploadImageProps> = ({ onFileSelect }) => {
+    const [imagePreviewUrl, setImagePreviewUrl] = useState<string | null>(null);
 
     const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files && e.target.files[0];
         if (file) {
+            onFileSelect(file);
             const reader = new FileReader();
             reader.onloadend = () => {
-                setImage(reader.result as string);
+                setImagePreviewUrl(reader.result as string);
             };
             reader.readAsDataURL(file);
         }
@@ -21,9 +25,9 @@ const UploadImage = () => {
             htmlFor="dropzone-file"
             className="w-full md:w-2/3 lg:w-full h-[300px] md:h-[300px] lg:h-[500px] flex items-center justify-center rounded-2xl bg-gray-200 cursor-pointer"
         >
-            {image ? (
+            {imagePreviewUrl ? (
                 <img
-                    src={image}
+                    src={imagePreviewUrl}
                     alt="Uploaded"
                     className="w-full h-full object-cover rounded-2xl border-2 shadow-md"
                 />
