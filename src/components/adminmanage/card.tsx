@@ -21,7 +21,7 @@ export default function Card({
     return (
         <div className="h-auto w-full rounded-[1rem] shadow-md m-2 flex flex-row py-2 md:py-7 items-center justify-between pr-5 pl-5 border-2">
             <div className="flex flex-row items-center">
-                <h1 className='mr-5 md:mr-10'>{id}</h1>
+                <h1 className="mr-5 md:mr-10">{id}</h1>
                 <div className="flex flex-row gap-5 md:gap-10 mr-3 md:mr-10">
                     <Image
                         src={picture || '/img/user/user1.png'}
@@ -47,7 +47,7 @@ export default function Card({
                 </button>
                     
                 </Link>
-                </div>
+            </div>
             <div className="hidden md:flex">
                 <Link href={`../admin/manage/user/${id}`}>
                     <button className="block text-md font-semibold rounded-full bg-redrice-yellow hover:bg-redrice-light-yellow  px-6 py-3 shadow-sm text-white text-center">

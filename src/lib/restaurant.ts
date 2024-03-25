@@ -96,10 +96,29 @@ const deleteRestaurant = async (id: string, token: string) => {
     }
 };
 
+const getRestaurantById = async (id: string, token: string) => {
+    try {
+        const response = await axios.get(
+            `https://redrice-backend-go.onrender.com/api/v1/restaurants/${id}`,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+        const { data } = response;
+        return data;
+    } catch (error) {
+        console.error('Get restaurant by id error:', error);
+    }
+};
+
 export {
-    getOneRestaurant,
     getAllRestaurant,
     createRestaurant,
     updateRestaurant,
+    getRestaurantById,
     deleteRestaurant,
+    getOneRestaurant,
 };

@@ -11,24 +11,24 @@ import { useRouter } from 'next/navigation';
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    
+
     const handleSubmit = async (event: any) => {
         event.preventDefault();
-        const result = await signIn("credentials", {
+        const result = await signIn('credentials', {
             email: email,
             password: password,
             redirect: false,
         });
-        console.log(result)
+        console.log(result);
     };
-    
+
     const { data: session } = useSession();
     const router = useRouter();
     useEffect(() => {
         if (session) {
             router.push('/');
         }
-    },[]);
+    }, []);
 
     return (
         <form

@@ -17,7 +17,7 @@ export default async function me() {
 
     return (
         <main className="">
-            <SubBar text="Punza's Profile"/>
+            <SubBar text="Punza's Profile" />
             <div className="w-[100%] flex flex-row justify-center ">
                 <CardProfile
                     profile={profile}

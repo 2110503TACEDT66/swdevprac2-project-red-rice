@@ -1,18 +1,35 @@
-import SubBar from "@/components/subbar";
-import ReservationPanel from "@/components/reservation/reservationpanel";
-import { reservation } from "../../../interface";
-export default function Reservation(){
-    const mockData:reservation[]=[
-        // {id:"001" ,name:"Mo-Mo-Paradise",table:3,time:"22.00 pm",state:"Pending",picture:"/img/component/momo.jpeg"},
-        // {id:"002" ,name:"Mo-Mo-Paradise",table:3,time:"22.00 pm",state:"Canceled",picture:"/img/component/momo.jpeg"},
-        // {id:"003" ,name:"Mo-Mo-Paradise",table:3,time:"22.00 pm",state:"Pending",picture:"/img/component/momo.jpeg"},
-        // {id:"001" ,name:"Mo-Mo-Paradise",table:3,time:"22.00 pm",state:"Approved",picture:"/img/component/momo.jpeg"},
-  
-    ]
-    return(
-        <div className="h-full">
-            <SubBar text={"Your Reservation"}></SubBar>
-            <ReservationPanel data={mockData}></ReservationPanel>
+'use client';
+import SubBar from '@/components/subbar';
+import ReservationPanel from '@/components/reservation/reservationpanel';
+import { reservation } from '../../../interface';
+import { getMyReservations } from '@/lib/reservation';
+import { useSession } from 'next-auth/react';
+import { useEffect, useState } from 'react';
+export default function Reservation() {
+    const { data: session } = useSession();
+    const [reservationData, setReservations] = useState<reservation[]>();
+    useEffect(() => {
+        if (!session) return;
+        const fetchReservations = async () => {
+            const fetchedReservations = await getMyReservations(
+                session.user.token
+            );
+            setReservations(fetchedReservations);
+        };
+        fetchReservations();
+    }, [session]);
+
+    // Handle loading state
+    if (!session || !reservationData) {
+        return <div>Loading...</div>;
+    }
+
+    return (
+        <div className="space-y-6">
+            <SubBar text={'Your Reservation'}></SubBar>
+            {reservationData && (
+                <ReservationPanel data={reservationData}></ReservationPanel>
+            )}
         </div>
-    )
+    );
 }

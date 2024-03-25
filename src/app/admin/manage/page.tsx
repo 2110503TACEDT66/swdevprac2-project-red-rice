@@ -5,7 +5,7 @@ import SubBar from '@/components/subbar';
 export default function AdminManage() {
     return (
         <main className="pl-12 pr-10 w-full h-auto overflow-y-auto">
-            <SubBar text="User Management"/>
+            <SubBar text="User Management" />
             <CardPanel />
         </main>
     );

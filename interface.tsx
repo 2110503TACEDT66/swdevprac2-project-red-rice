@@ -1,8 +1,9 @@
 export interface reservation {
-    id: string;
+    ID: string;
     name: string;
     table: number;
-    time: string;
-    state: "Pending" | "Canceled" | "Confirmed" | string; // More state options
+    dateTime: string;
+    state: 'Pending' | 'Canceled' | 'Confirmed' | string; // More state options
+    restaurant: any;
     picture: string;
-  }
+}

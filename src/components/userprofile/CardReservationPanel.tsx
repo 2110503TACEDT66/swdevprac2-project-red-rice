@@ -6,8 +6,8 @@ export default function CardReservationPanel({data}:{data:Array<Reservation>}) {
     return (
         <div className="h-[95%] flex flex-col items-center m-2 ">
             {data.map((item) => (
-                // eslint-disable-next-line react/jsx-key
-                <CardReservation  key={item.id}
+                <CardReservation
+                    key={item.id}
                     id={item.id}
                     name={item.restaurant.name}
                     time={item.dateTime}

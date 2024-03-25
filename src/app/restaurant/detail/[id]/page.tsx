@@ -103,7 +103,9 @@ const RestaurantDetailPage = ({ params }: { params: { id: string } }) => {
                             </section>
                             <div className="flex justify-center">
                                 <button className="bg-redrice-yellow hover:bg-redrice-light-yellow px-5 py-3 text-white font-semibold rounded-3xl text-xl w-full lg:w-1/2 mt-8">
-                                    <Link href={`/restaurant/reservation/create/${restaurant?.ID}`}>
+                                    <Link
+                                        href={`/restaurant/reservation/create/${restaurant?.ID}`}
+                                    >
                                         Book Reservation
                                     </Link>
                                 </button>
