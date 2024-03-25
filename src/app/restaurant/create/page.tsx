@@ -16,7 +16,7 @@ const CreateReservationPage = () => {
                     <UploadImage />
                 </div>
 
-                <form className="rounded-[1rem] p-10 w-full md:w-1/2 text-lg shadow-lg border-2 mt-6 lg:mt-0">
+                <form className="rounded-[1rem] p-5 md:p-10 w-full lg:w-1/2 text-lg shadow-lg border-2 mt-6 lg:mt-0 mb-6">
                     <div className="space-y-4">
                         {/* Restaurant Name input field */}
                         <div>
@@ -31,7 +31,7 @@ const CreateReservationPage = () => {
                                 id="restaurantName"
                                 name="restaurantName"
                                 placeholder="e.g. Mo-Mo-Paradise"
-                                className="bg-gray-50 border-2 font-light text-md border-gray-500 text-gray-900 rounded-2xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
+                                className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
                                 required
                             />
                         </div>
@@ -48,7 +48,7 @@ const CreateReservationPage = () => {
                                 id="address"
                                 name="address"
                                 placeholder="eg. Lu Lu พระรามได้ (ไทยดี) สาขา CentralWorld (ชั้น 7) 7th Fl., 999/9 Rama I Road, Pathumwan, Pathumwan, Bangkok 10330, Thailand"
-                                className="bg-gray-50 border-2 font-light text-md border-gray-500 text-gray-900 rounded-2xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
+                                className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
                                 required
                             ></textarea>
                         </div>
@@ -65,7 +65,7 @@ const CreateReservationPage = () => {
                                 id="telephone"
                                 name="telephone"
                                 placeholder="e.g. 0922698678"
-                                className="bg-gray-50 border-2 font-light text-md border-gray-500 text-gray-900 rounded-2xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
+                                className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
                                 required
                             />
                         </div>
@@ -83,7 +83,7 @@ const CreateReservationPage = () => {
                                 id="openTime"
                                 name="openTime"
                                 placeholder="e.g. 13:00"
-                                className="bg-gray-50 border-2 font-light text-md border-gray-500 text-gray-900 rounded-2xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
+                                className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
                                 required
                             />
                         </div>
@@ -101,14 +101,16 @@ const CreateReservationPage = () => {
                                 id="closeTime"
                                 name="closeTime"
                                 placeholder="e.g. 2:00 am"
-                                className="bg-gray-50 border-2 font-light text-md border-gray-500 text-gray-900 rounded-2xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
+                                className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
                                 required
                             />
                         </div>
                     </div>
-                    <button className="bg-redrice-yellow px-5 py-3 text-white font-semibold rounded-3xl text-xl w-full lg:w-1/2 ">
-                        Create Restaurant
-                    </button>
+                    <div className="flex justify-center">
+                        <button className="bg-redrice-yellow hover:bg-redrice-light-yellow px-5 py-3 text-white font-semibold rounded-3xl text-xl w-full lg:w-1/2 mt-8">
+                            Create Restaurant
+                        </button>
+                    </div>
                 </form>
             </main>
         </div>
