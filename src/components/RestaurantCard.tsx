@@ -78,9 +78,11 @@ const RestaurantCard = ({ ID, name, imageUrl }: RestaurantCardProps) => {
                         </button>
                         {userRole === 'admin' && (
                             <div>
+                                <Link href={`/restaurant/update/${ID}`}>
                                 <button className="rounded-full p-1 bg-redrice-blue text-white hover:bg-blue-400">
                                     <MdEdit />
                                 </button>
+                                </Link>
                                 <button
                                     className="rounded-full p-1 bg-redrice-red text-white hover:bg-red-400"
                                     onClick={handleDelete}
