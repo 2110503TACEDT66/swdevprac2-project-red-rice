@@ -41,7 +41,7 @@ export default function Card({
                 </div>
             </div>
             <div className='md:hidden'>
-            <Link href={`../${id}/profile`}>
+            <Link href={`../profile/${id}`}>
                 <button className='p-1 rounded-full bg-redrice-yellow hover:bg-redrice-light-yellow text-white'>
                 <IoInformation />
                 </button>
@@ -49,7 +49,7 @@ export default function Card({
                 </Link>
                 </div>
             <div className="hidden md:flex">
-                <Link href={`../${id}/profile`}>
+                <Link href={`../profile/${id}`}>
                     <button className="block text-md font-semibold rounded-full bg-redrice-yellow hover:bg-redrice-light-yellow  px-6 py-3 shadow-sm text-white text-center">
                         view details
                     </button>
