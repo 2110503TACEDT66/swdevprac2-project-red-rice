@@ -10,6 +10,8 @@ export default function CardReservation({
     time: string;
     picture: string;
 }) {
+    var createAt =new Date(time)
+    console.log(createAt)
     return (
         <div className="h-[15%] w-[90%] rounded-lg shadow-md m-1 flex flex-row hover:bg-slate-100">
             <div className="w-[45px] h-[45px] relative rounded-lg  p-5 m-5 ml-5 mr-5  self-center ">

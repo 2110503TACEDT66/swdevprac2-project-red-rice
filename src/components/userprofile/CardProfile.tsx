@@ -20,8 +20,8 @@ export default function CardProfile({profile}:{profile:any})
             </div>
             <div className="w-[60%]  relative right-0  m-3 self-center flex flex-col tablet:items-start items-center">
                     <h1 >{profile.name}</h1>
-                    <h1>Chulalongkorn {'<null>'}</h1>
-                    <h1>2005 {'<null>'}</h1>
+                    {profile.edu?<h1>profile.edu</h1>:''}
+                    {profile.bdy?<h1>profile.bdy</h1>:''}
             </div>
         </div>
     );
