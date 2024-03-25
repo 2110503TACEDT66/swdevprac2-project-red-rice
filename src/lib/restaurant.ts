@@ -49,4 +49,20 @@ const updateRestaurant = async (id: string, formData: FormData, token: string) =
     }
 }
 
-export { getAllRestaurant, createRestaurant, updateRestaurant };
+const getRestaurantById = async (id: string, token: string) => {
+    try {
+        const response = await axios.get(`https://redrice-backend-go.onrender.com/api/v1/restaurants/${id}`,
+        {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+        });
+        const { data } = response;
+        return data;
+    } catch (error) {
+        console.error('Get restaurant by id error:', error);
+    }
+}
+
+export { getAllRestaurant, createRestaurant, updateRestaurant, getRestaurantById };
