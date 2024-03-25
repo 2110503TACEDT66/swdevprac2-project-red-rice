@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { mockRestaurant } from '@/mock/restaurant';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import ConfirmReserve from '@/components/ConfirmReserve';
 import { getRestaurantById } from '@/lib/restaurant';
@@ -28,6 +29,7 @@ const CreateReservationPage = ({params} : {params : {id : string}}) => {
             [name]: value,
         }));
     }
+    const router = useRouter();
     const onConfirm = async () => {
         if (!session?.user.token) return;
 
@@ -37,6 +39,8 @@ const CreateReservationPage = ({params} : {params : {id : string}}) => {
             console.log('Reservation successful:', response);
         } catch (error) {
             console.error('Reservation error:', error);
+        } finally {
+            router.push('/complete/Your-Reservation-has-been-Create/reservation');
         }
     }
 

@@ -28,7 +28,7 @@ const CreateReservationPage = ({params} : {params: { id : string}}) => {
                 setRestaurantData(response.data);
             } catch (error) {
                 console.error('Failed to fetch restaurant data:', error);
-            }
+            } 
         };
         fetchRestaurantData();
     }, [session, params.id]);
@@ -56,12 +56,15 @@ const CreateReservationPage = ({params} : {params: { id : string}}) => {
         formData.append('openTime', openTime);
         formData.append('closeTime', closeTime);
         if (imageFile) formData.append('image', imageFile);
-        
+
         try {
             await updateRestaurant(params.id, formData, session.user.token);
             router.push('/restaurant');
         } catch (error) {
             console.error('Failed to update restaurant:', error);
+        } finally {
+            setModalOpen(false);
+            router.push('/complete/Your-Restaurant-has-been-Updated/restaurant');
         }
     };
 

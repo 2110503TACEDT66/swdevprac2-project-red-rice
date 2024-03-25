@@ -4,6 +4,7 @@ import Image from "next/image";
 import ConfirmDeleteReserve from "../ConfirmDeleteReserve";
 import { deleteReservation } from "@/lib/reservation";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 export default function ReservationCard({id,name,table,time,state,picture}:{id:string,name:string,table:number,time:string,state:string,picture:string}){
     const [reservationState] = useState<string>(state); 
     const getBackgroundColor = () => {
@@ -31,6 +32,7 @@ export default function ReservationCard({id,name,table,time,state,picture}:{id:s
     };
     const [resultShow, dispatchShow] = useReducer(reducerShow, show);
     const { data: session } = useSession();
+    const router = useRouter();
     const onConfirm = async () => {
         dispatchShow({ type: "hide" });
         if (!session?.user.token) return;
@@ -38,8 +40,7 @@ export default function ReservationCard({id,name,table,time,state,picture}:{id:s
         if(response){
             console.log("Delete Success");
         }
-        // force a page reload
-        window.location.reload();
+        router.push('/reservation/done')
     }
     return (
         <div className="w-full max-w-5xl mx-auto rounded-lg shadow-md flex flex-col tablet:flex-row items-center p-4 bg-white space-y-4 tablet:space-y-0 tablet:space-x-4">

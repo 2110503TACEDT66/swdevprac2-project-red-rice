@@ -4,6 +4,7 @@ import UploadImage from '@/components/UploadImage';
 import ConfirmCreateRes from '@/components/ConfirmCreateRes';
 import { createRestaurant } from '@/lib/restaurant';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 const CreateReservationPage = () => {
     const { data: session } = useSession();
@@ -18,7 +19,7 @@ const CreateReservationPage = () => {
     const [facebook, setFacebook] = useState('');
     const [instagram, setInstagram] = useState('');
     const formRef = useRef<HTMLFormElement>(null);
-    
+    const router = useRouter();
     const onFileSelect = (file: File) => {
         setImage(file);
     }
@@ -47,6 +48,7 @@ const CreateReservationPage = () => {
             console.error('Failed to create restaurant:', error);
         } finally {
             setIsPopupOpen(false); 
+            router.push('/complete/Your-Restaurant-has-been-Create/restaurant');
         }
     };
     
