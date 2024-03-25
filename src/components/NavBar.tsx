@@ -5,21 +5,29 @@ import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import { IoClose, IoMenu } from 'react-icons/io5';
 import { getme } from '@/lib/auth';
-
+import { signOut } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
-
     const [login, setLogin] = useState(false);
 
     const toggleNavbar = () => {
         setIsOpen(!isOpen);
     };
+
     const { data: session } = useSession();
+
     useEffect(() => {
         if (session) {
             setLogin(true);
         }
-    }, []);
+    });
+
+    const handleSignOut = async () => {
+        await signOut();
+        setLogin(false);
+        window.location.href = '/auth/login';
+    };
 
     const [userRole, setUserRole] = useState('');
 
@@ -31,7 +39,7 @@ const Navbar = () => {
             }
         };
         fetchUsers();
-    }, [session]);
+    });
 
     return (
         <nav className="relative">
@@ -87,16 +95,19 @@ const Navbar = () => {
                                             className="relative rounded-full border-4 border-redrice-yellow"
                                         />
                                     </Link>
-                                    
+                                    <button 
+                                        onClick={handleSignOut}
+                                        className="rounded-md text-xl font-base hover:text-redrice-yellow ease-in duration-300"
+                                    >Sign Out</button>
                                 </div>
                             </div>
                         ) : (
-                            <button
-                                onClick={() => setLogin(true)}
+                            <Link
+                                href = '/auth/login'
                                 className="font-bold text-white py-3 px-4 bg-redrice-yellow rounded-[1rem]  hover:text-black ease-in duration-300"
                             >
-                                Sign Up
-                            </button>
+                                Sign In
+                            </Link>
                         )}
                     </div>
                     <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">

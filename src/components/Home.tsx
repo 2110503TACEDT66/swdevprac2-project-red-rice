@@ -1,7 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
-
+import Link from 'next/link';
 const Home = () => {
+    
     return (
         <main
             className="pl-12 pr-10 w-full h-screen overflow-y-auto flex justify-between flex-wrap bg-cover"
@@ -26,9 +27,9 @@ const Home = () => {
                     Discover a seamless way to secure your dining plans with our
                     intuitive reservation platform.
                 </p>
-                <button className="bg-redrice-yellow py-4 rounded-[2rem] font-bold text-white w-52 hover:bg-redrice-light-yellow">
+                <Link href = '/restaurant' className="bg-redrice-yellow py-4 rounded-[2rem] font-bold text-white w-52 hover:bg-redrice-light-yellow text-center">
                     Book Reservation Now
-                </button>
+                </Link>
             </div>
             <div className="hidden lg:block lg:pt-24 h-auto">
                 <Image
