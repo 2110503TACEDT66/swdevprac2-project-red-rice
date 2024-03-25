@@ -20,16 +20,14 @@ const LoginForm = () => {
             redirect: false,
         });
         console.log(result);
+        if (result?.status === 200) {
+            router.replace('/');
+            router.refresh();
+        }
     };
 
     const { data: session } = useSession();
     const router = useRouter();
-    useEffect(() => {
-        if (session) {
-            router.push('/');
-        }
-    }, []);
-
     return (
         <form
             onSubmit={handleSubmit}
