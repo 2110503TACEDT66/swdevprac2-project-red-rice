@@ -1,7 +1,11 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import UploadImage from '@/components/UploadImage';
+import ConfirmCreateRes from '@/components/ConfirmCreateRes';
 
 const CreateReservationPage = () => {
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [restaurant, setRestaurant] = useState<string>('');
 
     return (
         <div className="pl-12 pr-10 w-full h-screen overflow-y-auto">
@@ -14,7 +18,7 @@ const CreateReservationPage = () => {
                     <UploadImage />
                 </div>
 
-                <form className="rounded-[1rem] p-5 md:p-10 w-full lg:w-1/2 text-lg shadow-lg border-2 mt-6 lg:mt-0 mb-6">
+                <div className="rounded-[1rem] p-5 md:p-10 w-full lg:w-1/2 text-lg shadow-lg border-2 mt-6 lg:mt-0 mb-6">
                     <div className="space-y-4">
                         {/* Restaurant Name input field */}
                         <div>
@@ -31,6 +35,9 @@ const CreateReservationPage = () => {
                                 placeholder="e.g. Mo-Mo-Paradise"
                                 className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
                                 required
+                                onChange={(e) => {
+                                    setRestaurant(e.target.value);
+                                }}
                             />
                         </div>
 
@@ -105,12 +112,22 @@ const CreateReservationPage = () => {
                         </div>
                     </div>
                     <div className="flex justify-center">
-                        <button className="bg-redrice-yellow hover:bg-redrice-light-yellow px-5 py-3 text-white font-semibold rounded-3xl text-xl w-full lg:w-1/2 mt-8">
+                        <button
+                            className="bg-redrice-yellow hover:bg-redrice-light-yellow px-5 py-3 text-white font-semibold rounded-3xl text-xl w-full lg:w-1/2 mt-8"
+                            onClick={() => {
+                                setIsPopupOpen(!isPopupOpen);
+                            }}
+                        >
                             Create Restaurant
                         </button>
                     </div>
-                </form>
+                </div>
             </main>
+            {isPopupOpen && (
+                <div >
+                    <ConfirmCreateRes restaurant={restaurant} />
+                </div>
+            )}
         </div>
     );
 };
