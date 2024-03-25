@@ -34,13 +34,16 @@ const RestaurantCard = ({ id, name, imageUrl }: RestaurantCardProps) => {
             className="flex p-2 border-2 rounded-xl mx-2 w-1/2 flex-col shadow-md px-0"
             style={{ minWidth: '300px', maxWidth: '600px' }}
         >
-            <Image
-                src={imageUrl}
-                alt="restaurant"
-                width={500}
-                height={500}
-                className="object-cover py-2"
-            />
+            <div className="h-[300px]">
+                <Image
+                    src={imageUrl}
+                    alt="restaurant"
+                    width={500}
+                    height={500}
+                    className="object-center object-fill py-2 w-full h-[300px]"
+                />
+            </div>
+
             <div className="mx-4 flex flex-col justify-between h-full">
                 <div>
                     <h1 className="text-2xl font-semibold">{name}</h1>
