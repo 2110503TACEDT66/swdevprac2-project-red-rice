@@ -14,8 +14,9 @@ export default function ReservationPanel({ data }: { data: reservation[] }) {
                 </div>
             ) : 
         <div className="flex flex-col items-center justify-center space-y-4">
-            {data.map((item) => (
+            {data.map((item, key) => (
                 <ReservationCard
+                    key={key}
                     id={item.ID}
                     name={item.restaurant.name}
                     table={1}
