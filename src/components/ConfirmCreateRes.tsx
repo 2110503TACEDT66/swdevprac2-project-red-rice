@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
+interface ConfirmCreateResProps {
+    restaurant: string;
+    onConfirm: () => void;
+    onCancel: () => void;
+}
 
-const ConfirmCreateRes = ({ restaurant }: { restaurant: string }) => {
+const ConfirmCreateRes: React.FC<ConfirmCreateResProps> = ({ restaurant, onConfirm, onCancel }) => {
     const [isOpen, setIsOpen] = useState(true);
 
     const handleClose = () => {
@@ -18,13 +23,13 @@ const ConfirmCreateRes = ({ restaurant }: { restaurant: string }) => {
                         <div className="flex flex-row gap-3">
                             <button
                                 className="bg-redrice-green py-2 px-3 w-28 text-white font-semibold rounded-[1rem] hover:bg-green-400"
-                                onClick={handleClose}
+                                onClick={() => { handleClose(); onConfirm(); }}
                             >
                                 Confirm
                             </button>
                             <button
                                 className="bg-redrice-red py-2 px-3 w-28 text-white font-semibold rounded-[1rem] hover:bg-red-400"
-                                onClick={handleClose}
+                                onClick={() => {handleClose(); onCancel();}}
                             >
                                 Cancel
                             </button>
