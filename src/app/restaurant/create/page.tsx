@@ -7,15 +7,16 @@ const CreateReservationPage = () => {
 
     return (
         <div className="pl-12 pr-10 w-full h-screen overflow-y-auto">
-            <div className="flex items-center">
-                <h2 className="font-semibold text-2xl">
-                    Book a Table at {restaurantData.name}
-                </h2>
-            </div>
-            <main className="w-full gap-10 flex flex-row items-center">
-                <UploadImage />
+            <h2 className="font-semibold text-2xl">
+                Book a Table at {restaurantData.name}
+            </h2>
 
-                <form className="rounded-[1rem] p-10 w-1/2 text-lg shadow-lg border-2">
+            <main className="w-full lg:gap-10 flex flex-row items-center flex-wrap lg:flex-nowrap">
+                <div className="w-full lg:w-1/2 flex justify-center mt-5 lg:mt-0">
+                    <UploadImage />
+                </div>
+
+                <form className="rounded-[1rem] p-10 w-full md:w-1/2 text-lg shadow-lg border-2 mt-6 lg:mt-0">
                     <div className="space-y-4">
                         {/* Restaurant Name input field */}
                         <div>
