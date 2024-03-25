@@ -1,4 +1,4 @@
-
+import Link from 'next/link';
 import ReservationCard from './reservationcard';
 import { reservation } from '../../../interface';
 export default function ReservationPanel({ data }: { data: reservation[] }) {
