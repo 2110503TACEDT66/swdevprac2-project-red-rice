@@ -169,7 +169,7 @@ const CreateReservationPage = () => {
                         </button>
                     </div>
                     {isPopupOpen && (
-                <div >
+                <div>
                     <ConfirmCreateRes 
                         restaurant={restaurant} 
                         onConfirm={handleConfirm}
