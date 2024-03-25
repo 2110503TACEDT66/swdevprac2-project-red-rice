@@ -1,30 +1,35 @@
-"use client";
-import SubBar from "@/components/subbar";
-import ReservationPanel from "@/components/reservation/reservationpanel";
-import { reservation } from "../../../interface";
-import { getMyReservations } from "@/lib/reservation";
-import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
-export default function Reservation(){
-    const {data: session} = useSession();
+'use client';
+import SubBar from '@/components/subbar';
+import ReservationPanel from '@/components/reservation/reservationpanel';
+import { reservation } from '../../../interface';
+import { getMyReservations } from '@/lib/reservation';
+import { useSession } from 'next-auth/react';
+import { useEffect, useState } from 'react';
+export default function Reservation() {
+    const { data: session } = useSession();
     const [reservationData, setReservations] = useState<reservation[]>();
-    if(!session){
-        return <div>loading...</div>
-    }
     useEffect(() => {
         if (!session) return;
         const fetchReservations = async () => {
-            const fetchedReservations = await getMyReservations(session.user.token);
+            const fetchedReservations = await getMyReservations(
+                session.user.token
+            );
             setReservations(fetchedReservations);
         };
         fetchReservations();
+    }, [session]);
 
-    },[session])
+    // Handle loading state
+    if (!session || !reservationData) {
+        return <div>Loading...</div>;
+    }
 
-    return(
+    return (
         <div className="space-y-6">
-            <SubBar text={"Your Reservation"}></SubBar>
-            {reservationData && <ReservationPanel data={reservationData}></ReservationPanel>}
+            <SubBar text={'Your Reservation'}></SubBar>
+            {reservationData && (
+                <ReservationPanel data={reservationData}></ReservationPanel>
+            )}
         </div>
-    )
+    );
 }

@@ -16,7 +16,7 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'i.pinimg.com',
                 port: '',
-            }
+            },
         ],
     },
     async headers() {

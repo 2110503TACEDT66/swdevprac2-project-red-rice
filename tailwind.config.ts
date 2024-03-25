@@ -8,17 +8,17 @@ const config: Config = {
     ],
     theme: {
         screens: {
-            'sm': '640px',
-            'md'	:'768px',
-            'tablet': '850px',
+            sm: '640px',
+            md: '768px',
+            tablet: '850px',
             // => @media (min-width: 640px) { ... }
-      
-            'lg': '1024px',
+
+            lg: '1024px',
             // => @media (min-width: 1024px) { ... }
-      
-            'xl': '1280px',
+
+            xl: '1280px',
             // => @media (min-width: 1280px) { ... }
-          },
+        },
         extend: {
             colors: {
                 'redrice-red': '#FF3636',

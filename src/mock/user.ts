@@ -86,5 +86,5 @@ export const mockUser = [
         email: 'punza007@gmail.com',
         tel: '0922698678',
         picture: '/img/user/user2.jpg',
-    }
+    },
 ];

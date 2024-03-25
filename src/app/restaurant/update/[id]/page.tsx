@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React from 'react';
 import { BiPencil } from 'react-icons/bi';
 import Image from 'next/image';
@@ -10,7 +10,7 @@ import { useRouter } from 'next/navigation';
 import ConfirmCreateRes from '@/components/ConfirmCreateRes';
 import axios from 'axios';
 
-const CreateReservationPage = ({params} : {params: { id : string}}) => {
+const CreateReservationPage = ({ params }: { params: { id: string } }) => {
     const { data: session } = useSession();
     const router = useRouter();
     const [restaurantData, setRestaurantData] = useState<any>();
@@ -20,26 +20,29 @@ const CreateReservationPage = ({params} : {params: { id : string}}) => {
         const fetchRestaurantData = async () => {
             if (!session?.user.token || !params.id) return;
             try {
-                const response = await axios.get(`https://redrice-backend-go.onrender.com/api/v1/restaurants/${params.id}`, {
-                    headers: {
-                        'Authorization': `Bearer ${session.user.token}`,
-                    },
-                });
+                const response = await axios.get(
+                    `https://redrice-backend-go.onrender.com/api/v1/restaurants/${params.id}`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${session.user.token}`,
+                        },
+                    }
+                );
                 setRestaurantData(response.data);
             } catch (error) {
                 console.error('Failed to fetch restaurant data:', error);
-            } 
+            }
         };
         fetchRestaurantData();
     }, [session, params.id]);
 
-    const handleFileSelect = (file : File) => {
+    const handleFileSelect = (file: File) => {
         setImageFile(file);
     };
 
-    const handleInputChange = (e : any) => {
+    const handleInputChange = (e: any) => {
         const { name, value } = e.target;
-        setRestaurantData((prevState : any) => ({
+        setRestaurantData((prevState: any) => ({
             ...prevState,
             [name]: value,
         }));
@@ -49,7 +52,8 @@ const CreateReservationPage = ({params} : {params: { id : string}}) => {
         if (!session?.user.token) return;
 
         const formData = new FormData();
-        const { restaurantName, address, telephone, openTime, closeTime } = restaurantData;
+        const { restaurantName, address, telephone, openTime, closeTime } =
+            restaurantData;
         formData.append('name', restaurantName);
         formData.append('address', address);
         formData.append('telephone', telephone);
@@ -64,7 +68,9 @@ const CreateReservationPage = ({params} : {params: { id : string}}) => {
             console.error('Failed to update restaurant:', error);
         } finally {
             setModalOpen(false);
-            router.push('/complete/Your-Restaurant-has-been-Updated/restaurant');
+            router.push(
+                '/complete/Your-Restaurant-has-been-Updated/restaurant'
+            );
         }
     };
 
@@ -79,21 +85,21 @@ const CreateReservationPage = ({params} : {params: { id : string}}) => {
             <main className="py-10 flex justify-center lg:space-x-16 w-screen flex-wrap lg:flex-nowrap lg:px-44 space-y-10 lg:space-y-0">
                 <section className="w-full lg:w-1/2">
                     <div className="relative w-full h-[384px] rounded-2xl overflow-hidden">
-                    <Image
-                        src={restaurantData.imageUrl} // Fallback to a default image if none is provided
-                        alt={restaurantData.name}
-                        layout="fill"
-                        objectFit="cover"
-                        className="rounded-2xl"
-                    />
+                        <Image
+                            src={restaurantData.imageUrl} // Fallback to a default image if none is provided
+                            alt={restaurantData.name}
+                            layout="fill"
+                            objectFit="cover"
+                            className="rounded-2xl"
+                        />
 
-                    {/* Overlay Upload Button */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-80">
-                        <UploadImage onFileSelect={handleFileSelect}/>
-                        <div className="absolute bottom-4 right-4 bg-white p-2 rounded-full shadow-lg">
-                            <BiPencil size={24} className="text-gray-800" />
+                        {/* Overlay Upload Button */}
+                        <div className="absolute inset-0 flex items-center justify-center opacity-80">
+                            <UploadImage onFileSelect={handleFileSelect} />
+                            <div className="absolute bottom-4 right-4 bg-white p-2 rounded-full shadow-lg">
+                                <BiPencil size={24} className="text-gray-800" />
+                            </div>
                         </div>
-                    </div>
                     </div>
                 </section>
                 <section className="mx-auto rounded-lg p-12 w-full lg:w-1/2 text-lg shadow-lg space-y-10">
@@ -183,23 +189,21 @@ const CreateReservationPage = ({params} : {params: { id : string}}) => {
                             />
                         </div>
                     </div>
-                    <button 
+                    <button
                         className="bg-redrice-blue px-5 py-3 text-white font-semibold rounded-3xl text-xl w-full lg:w-1/2 "
-                        type = "button"
+                        type="button"
                         onClick={() => setModalOpen(true)}
-                        >
+                    >
                         Edit Restaurant
                     </button>
                 </section>
-                {
-                    modalOpen && (
-                        <ConfirmCreateRes
-                            restaurant={restaurantData.name}
-                            onConfirm={onConfirm}
-                            onCancel={() => setModalOpen(false)}
-                        />
-                    )
-                }
+                {modalOpen && (
+                    <ConfirmCreateRes
+                        restaurant={restaurantData.name}
+                        onConfirm={onConfirm}
+                        onCancel={() => setModalOpen(false)}
+                    />
+                )}
             </main>
         </div>
     );

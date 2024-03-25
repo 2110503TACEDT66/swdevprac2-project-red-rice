@@ -5,7 +5,7 @@ import CardProfile from '@/components/userprofile/CardProfile';
 export default function profile({ params }: { params: { id: string } }) {
     return (
         <main className="">
-            <SubBar text="Punza's Profile"/>
+            <SubBar text="Punza's Profile" />
             <div className="w-[100%] flex flex-row justify-center ">
                 <CardProfile
                     id={params.id}

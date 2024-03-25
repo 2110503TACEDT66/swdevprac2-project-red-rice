@@ -3,7 +3,7 @@ export interface reservation {
     name: string;
     table: number;
     dateTime: string;
-    state: "Pending" | "Canceled" | "Confirmed" | string; // More state options
+    state: 'Pending' | 'Canceled' | 'Confirmed' | string; // More state options
     restaurant: any;
     picture: string;
-  }
+}

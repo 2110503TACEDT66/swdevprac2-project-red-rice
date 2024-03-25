@@ -19,9 +19,9 @@ export default function CardProfile({
                 />
             </div>
             <div className="w-[60%]  relative right-0  m-3 self-center flex flex-col tablet:items-start items-center">
-                    <h1 >{name}</h1>
-                    <h1>Chulalongkorn</h1>
-                    <h1>2005</h1>
+                <h1>{name}</h1>
+                <h1>Chulalongkorn</h1>
+                <h1>2005</h1>
             </div>
         </div>
     );

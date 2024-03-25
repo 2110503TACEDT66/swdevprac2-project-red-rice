@@ -49,14 +49,14 @@ export default function CardReservationPanel() {
             name: 'Mo-Mo-Paradise',
             time: '29 January 2024 22:00 pm',
             picture: '/img/component/momo.jpeg',
-        }
-
+        },
     ];
     return (
         <div className="h-[95%] flex flex-col items-center m-2 ">
             {mockData.map((item) => (
                 // eslint-disable-next-line react/jsx-key
-                <CardReservation  key={item.id}
+                <CardReservation
+                    key={item.id}
                     id={item.id}
                     name={item.name}
                     time={item.time}

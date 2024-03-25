@@ -11,14 +11,16 @@ export const authOptions: AuthOptions = {
                 password: { label: 'Password', type: 'password' },
             },
             async authorize(credentials) {
-              if (!credentials) {
-                  throw new Error('No credentials provided');
-              }
-              const user = await login(credentials.email, credentials.password);
-              
-          
-              return user || null;
-          }
+                if (!credentials) {
+                    throw new Error('No credentials provided');
+                }
+                const user = await login(
+                    credentials.email,
+                    credentials.password
+                );
+
+                return user || null;
+            },
         }),
     ],
     session: { strategy: 'jwt' },
@@ -28,7 +30,7 @@ export const authOptions: AuthOptions = {
         },
         async session({
             session,
-            token
+            token,
         }: {
             session: any;
             token: any;
