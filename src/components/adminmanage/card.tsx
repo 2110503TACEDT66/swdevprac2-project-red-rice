@@ -40,15 +40,16 @@ export default function Card({
                     <h1>{tel}</h1>
                 </div>
             </div>
-            <div className="md:hidden">
-                <Link href={`../${id}/profile`}>
-                    <button className="p-1 rounded-full bg-redrice-yellow hover:bg-redrice-light-yellow text-white">
-                        <IoInformation />
-                    </button>
+            <div className='md:hidden'>
+            <Link href={`../admin/manage/user/${id}`}>
+                <button className='p-1 rounded-full bg-redrice-yellow hover:bg-redrice-light-yellow text-white'>
+                <IoInformation />
+                </button>
+                    
                 </Link>
             </div>
             <div className="hidden md:flex">
-                <Link href={`../${id}/profile`}>
+                <Link href={`../admin/manage/user/${id}`}>
                     <button className="block text-md font-semibold rounded-full bg-redrice-yellow hover:bg-redrice-light-yellow  px-6 py-3 shadow-sm text-white text-center">
                         view details
                     </button>

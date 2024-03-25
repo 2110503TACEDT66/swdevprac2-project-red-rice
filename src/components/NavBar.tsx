@@ -78,13 +78,16 @@ const Navbar = () => {
                                     >
                                         Restaurant
                                     </Link>
-                                    <Image
-                                        src={'/img/profile.svg'}
-                                        alt="logo"
-                                        width={50}
-                                        height={50}
-                                        className="relative rounded-full border-4 border-redrice-yellow"
-                                    />
+                                    <Link href={"/profile"}>
+                                        <Image
+                                            src={'/img/profile.svg'}
+                                            alt="logo"
+                                            width={50}
+                                            height={50}
+                                            className="relative rounded-full border-4 border-redrice-yellow"
+                                        />
+                                    </Link>
+                                    
                                 </div>
                             </div>
                         ) : (

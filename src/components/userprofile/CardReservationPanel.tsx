@@ -51,16 +51,20 @@ export default function CardReservationPanel() {
             picture: '/img/component/momo.jpeg',
         },
     ];
+import Reservation from '@/types/reservation';
+
+export default function CardReservationPanel({data}:{data:Array<Reservation>}) {
+
     return (
         <div className="h-[95%] flex flex-col items-center m-2 ">
-            {mockData.map((item) => (
+            {data.map((item) => (
                 // eslint-disable-next-line react/jsx-key
                 <CardReservation
                     key={item.id}
                     id={item.id}
-                    name={item.name}
-                    time={item.time}
-                    picture={item.picture}
+                    name={item.restaurant.name}
+                    time={item.dateTime}
+                    picture={item.restaurant.imageUrl}
                 ></CardReservation>
             ))}
         </div>
