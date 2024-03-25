@@ -1,18 +1,31 @@
+"use client";
 import SubBar from "@/components/subbar";
 import ReservationPanel from "@/components/reservation/reservationpanel";
 import { reservation } from "../../../interface";
+import { getMyReservations } from "@/lib/reservation";
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 export default function Reservation(){
-    const mockData:reservation[]=[
-        {id:"001" ,name:"Mo-Mo-Paradise",table:3,time:"22.00 pm",state:"Pending",picture:"/img/component/momo.jpeg"},
-        {id:"002" ,name:"Mo-Mo-Paradise",table:3,time:"22.00 pm",state:"Canceled",picture:"/img/component/momo.jpeg"},
-        {id:"003" ,name:"Mo-Mo-Paradise",table:3,time:"22.00 pm",state:"Pending",picture:"/img/component/momo.jpeg"},
-        {id:"001" ,name:"Mo-Mo-Paradise",table:3,time:"22.00 pm",state:"Approved",picture:"/img/component/momo.jpeg"},
-  
-    ]
+    const {data: session} = useSession();
+    const [reservationData, setReservations] = useState<reservation[]>();
+    if(!session){
+        return <div>loading...</div>
+    }
+    useEffect(() => {
+        const fetchReservations = async () => {
+            if (session?.user.token) {
+                const fetchedReservations = await getMyReservations(session.user.token);
+                setReservations(fetchedReservations);
+            }
+        };
+        fetchReservations();
+
+    },[session])
+
     return(
-        <div>
+        <div className="space-y-6">
             <SubBar text={"Your Reservation"}></SubBar>
-            <ReservationPanel data={mockData}></ReservationPanel>
+            {reservationData && <ReservationPanel data={reservationData}></ReservationPanel>}
         </div>
     )
 }

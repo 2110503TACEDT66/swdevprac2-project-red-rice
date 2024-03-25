@@ -11,6 +11,11 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 's3.inspace.cloud',
                 port: '',
+            },
+            {
+                protocol: 'https',
+                hostname: 'i.pinimg.com',
+                port: '',
             }
         ],
     },

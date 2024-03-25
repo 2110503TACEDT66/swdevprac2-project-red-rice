@@ -25,4 +25,41 @@ const createReservation = async (token: string, reservationRequest: createReserv
     }
 }
 
-export { createReservation };
+const getMyReservations = async (token: string) => {
+    try {
+        const user = await axios.get('https://redrice-backend-go.onrender.com/api/v1/me', {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            }
+        });
+        console.log('User:', user.data)
+        const id = user.data.ID;
+        const response = await axios.get(`https://redrice-backend-go.onrender.com/api/v1/users/${id}/reservations`, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            }
+        });
+        console.log(response.data);
+        return response.data;
+    } catch (error) {
+        console.error('Get my reservations error:', error);
+        throw error;
+    }
+}
+
+const deleteReservation = (token: string, reservationId: number) => {
+    try {
+        const response = axios.delete(`https://redrice-backend-go.onrender.com/api/v1/reservations/${reservationId}`, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            }
+        });
+
+        return response;
+    } catch (error) {
+        console.error('Delete reservation error:', error);
+        throw error;
+    }
+
+}
+export { createReservation, getMyReservations, deleteReservation };
