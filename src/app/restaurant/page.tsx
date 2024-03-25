@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { getme } from '@/lib/auth';
 
-const page = () => {
+const Page = () => {
     const [userRole, setUserRole] = useState('');
 
     const { data: session } = useSession();
@@ -47,4 +47,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Page;
