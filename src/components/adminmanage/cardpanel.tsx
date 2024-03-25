@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import Card from './card';
 import { mockUser } from '@/mock/user';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import User from '@/types/user';
-export default function CardPanel({data}:{data:Array<User>}) {
-    const mockData = data;
+
+export default function CardPanel() {
+    const mockData = mockUser;
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(10);
 
@@ -31,7 +31,7 @@ export default function CardPanel({data}:{data:Array<User>}) {
                     name={item.name}
                     role={item.role}
                     email={item.email}
-                    tel={item.telephone}
+                    tel={item.tel}
                     picture={item.picture}
                 />
             ))}
