@@ -1,15 +1,13 @@
 import React from 'react';
-import { mockRestaurant } from '@/mock/restaurant';
 import UploadImage from '@/components/UploadImage';
 
 const CreateReservationPage = () => {
-    const restaurantData = mockRestaurant;
 
     return (
         <div className="pl-12 pr-10 w-full h-screen overflow-y-auto">
-            <h2 className="font-semibold text-2xl">
-                Book a Table at {restaurantData.name}
-            </h2>
+            <h1 className="text-3xl md:text-4xl font-semibold">
+                Create Restaurant
+            </h1>
 
             <main className="w-full lg:gap-10 flex flex-row items-center flex-wrap lg:flex-nowrap">
                 <div className="w-full lg:w-1/2 flex justify-center mt-5 lg:mt-0">
