@@ -2,24 +2,31 @@ import SubBar from '@/components/subbar';
 import PersonalDetails from '@/components/userprofile/personaldetails';
 import Reservation from '@/components/userprofile/reservation';
 import CardProfile from '@/components/userprofile/CardProfile';
-export default function profile({ params }: { params: { id: string } }) {
+import { getServerSession } from "next-auth"
+import { authOptions } from '@/utils/authOption';
+import { getUserById } from '@/lib/auth';
+export default async function profile({ params }: { params: { id: string } }) {
+    const session =await getServerSession(authOptions)
+    if(!session || !session.user.token){
+        return null
+    }
+    const profile =await getUserById(session.user.token,params.id)
+    console.log(profile)
     return (
         <main className="">
             <SubBar text="Punza's Profile"/>
-            <div className="w-[100%] flex flex-row justify-center ">
+            {/* <div className="w-[100%] flex flex-row justify-center ">
                 <CardProfile
-                    id={params.id}
-                    name="Sirawit Chanaburanasak"
-                    picture="/img/user/user1.png"
+                    profile={profile}
                 ></CardProfile>
             </div>
 
             <div className="w-[100%]  flex flex-row">
                 <div className="w-[100%] h-[35%] flex tablet:flex-row flex-col">
-                    <PersonalDetails></PersonalDetails>
+                    <PersonalDetails profile={profile}></PersonalDetails>
                     <Reservation></Reservation>
                 </div>
-            </div>
+            </div> */}
         </main>
     );
 }
