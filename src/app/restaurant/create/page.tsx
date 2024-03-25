@@ -121,13 +121,13 @@ const CreateReservationPage = () => {
                             Create Restaurant
                         </button>
                     </div>
+                    {isPopupOpen && (
+                        <div>
+                            <ConfirmCreateRes restaurant={restaurant} />
+                        </div>
+                    )}
                 </div>
             </main>
-            {isPopupOpen && (
-                <div >
-                    <ConfirmCreateRes restaurant={restaurant} />
-                </div>
-            )}
         </div>
     );
 };

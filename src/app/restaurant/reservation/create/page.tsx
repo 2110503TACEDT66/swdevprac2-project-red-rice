@@ -1,21 +1,31 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import { mockRestaurant } from '@/mock/restaurant';
 import Image from 'next/image';
-import Instagram from '/public/img/instagram.svg';
-import Twitter from '/public/img/twitter.svg';
-import { BiPhone } from 'react-icons/bi';
+import ConfirmReserve from '@/components/ConfirmReserve';
 
 const CreateReservationPage = () => {
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+
     const restaurantData = mockRestaurant;
     return (
-        <div>
-            <header className="flex items-center">
-                <h2 className="font-semibold text-2xl">
-                    Book a Table at {restaurantData.name}
-                </h2>
-            </header>
-            <main className="py-10 flex justify-center lg:space-x-16 w-screen flex-wrap lg:flex-nowrap lg:px-44 space-y-40 lg:space-y-0">
-                <section className="mx-auto rounded-lg p-12 w-full lg:w-1/2 text-lg shadow-lg space-y-40">
+        <div className="pl-12 pr-10 w-full h-screen overflow-y-auto">
+            <h1 className="text-3xl md:text-4xl font-semibold">
+                Book a Table at {restaurantData.name}
+            </h1>
+
+            <main className="w-full lg:gap-10 flex flex-row items-center flex-wrap lg:flex-nowrap lg:h-[700px]">
+                <div className="w-full lg:w-1/2 flex justify-center mt-5 lg:mt-0">
+                    <Image
+                        src={restaurantData.image}
+                        alt={restaurantData.name}
+                        width={500}
+                        height={500}
+                        className="rounded-2xl object-cover"
+                    />
+                </div>
+
+                <div className="rounded-[1rem] p-5 md:p-10 w-full lg:w-1/2 text-lg shadow-lg border-2 mt-6 lg:mt-0 mb-6">
                     <div className="space-y-4">
                         <div>
                             <label
@@ -29,7 +39,7 @@ const CreateReservationPage = () => {
                                 id="tableNumber"
                                 name="tableNumber"
                                 placeholder="e.g. 4"
-                                className="bg-gray-50 border-2 font-light text-md border-gray-500 text-gray-900 rounded-2xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full lg:w-3/4 px-3 py-1"
+                                className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-2xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1"
                                 required
                             />
                         </div>
@@ -44,7 +54,7 @@ const CreateReservationPage = () => {
                                 type="time"
                                 id="arrivalTime"
                                 name="arrivalTime"
-                                className="bg-gray-50 border-2 font-light text-md border-gray-500 text-gray-900 rounded-2xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full lg:w-3/4 px-3 py-1"
+                                className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-2xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1"
                                 required
                             />
                         </div>
@@ -59,25 +69,27 @@ const CreateReservationPage = () => {
                                 type="time"
                                 id="leaveTime"
                                 name="leaveTime"
-                                className="bg-gray-50 border-2 font-light text-md border-gray-500 text-gray-900 rounded-2xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full lg:w-3/4 px-3 py-1"
+                                className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-2xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1"
                                 required
                             />
                         </div>
                     </div>
-                    <button className="bg-redrice-yellow px-5 py-3 text-white font-semibold rounded-3xl text-2xl w-full lg:w-3/4">
-                        Reserve
-                    </button>
-                </section>
-                <section className="w-full lg:w-1/2">
-                    <Image
-                        src={restaurantData.image}
-                        alt={restaurantData.name}
-                        width={384}
-                        height={384}
-                        layout="responsive"
-                        className="rounded-2xl"
-                    />
-                </section>
+                    <div className="flex justify-center">
+                        <button
+                            className="bg-redrice-yellow hover:bg-redrice-light-yellow px-5 py-3 text-white font-semibold rounded-3xl text-xl w-full lg:w-1/2 mt-8"
+                            onClick={() => {
+                                setIsPopupOpen(!isPopupOpen);
+                            }}
+                        >
+                            Reserve
+                        </button>
+                    </div>
+                    {isPopupOpen && (
+                        <div>
+                            <ConfirmReserve restaurant={restaurantData.name} />
+                        </div>
+                    )}
+                </div>
             </main>
         </div>
     );
