@@ -18,7 +18,7 @@ const Restaurants = () => {
         };
         fetchRestaurants();
     }, [session]);
-    
+    console.log(restaurants)
     return (
         <div className="mt-5 md:mt-14 h-2/3 max-h-[550px] overflow-x-scroll ring-2 ring-slate-200 rounded-xl p-5 flex flex-row">
             {restaurants.map((res: Restaurant) => (
