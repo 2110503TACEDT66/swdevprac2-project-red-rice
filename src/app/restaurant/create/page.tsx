@@ -9,12 +9,14 @@ const CreateReservationPage = () => {
     const { data: session } = useSession();
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [restaurant, setRestaurant] = useState<string>('');
+    const [description, setDescription] = useState<string>('');
     const [image, setImage] = useState<File | null>(null);
     const [address, setAddress] = useState('');
     const [telephone, setTelephone] = useState('');
     const [openTime, setOpenTime] = useState('');
     const [closeTime, setCloseTime] = useState('');
-
+    const [facebook, setFacebook] = useState('');
+    const [instagram, setInstagram] = useState('');
     const formRef = useRef<HTMLFormElement>(null);
     
     const onFileSelect = (file: File) => {
@@ -25,10 +27,13 @@ const CreateReservationPage = () => {
         const formData = new FormData();
         formData.append('name', restaurant);
         if (image) formData.append('image', image);
+        formData.append('description', description);
         formData.append('address', address);
         formData.append('telephone', telephone);
         formData.append('openTime', openTime);
         formData.append('closeTime', closeTime);
+        formData.append('facebook', facebook);
+        formData.append('instagram', instagram);
         try {
             if (session?.user?.token) {
                 console.log(session.user.role)
@@ -82,7 +87,23 @@ const CreateReservationPage = () => {
                                 }}
                             />
                         </div>
-
+                        <div>
+                            <label
+                                htmlFor="description"
+                                className="block mb-2 text-md font-semibold text-gray-900"
+                            >
+                                description
+                            </label>
+                            <input
+                                type="textarea"
+                                id="description"
+                                name="description"
+                                placeholder=""
+                                className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
+                                required
+                                onChange={(e) => setDescription(e.target.value)}
+                            />
+                        </div>
                         {/* Address input field */}
                         <div>
                             <label
@@ -155,6 +176,43 @@ const CreateReservationPage = () => {
                                 required
                                 onChange={(e) => setCloseTime(e.target.value)}
                             />
+                        </div>
+                        
+                        <div className='flex space-x-4'>
+                            <div>
+                            <label
+                                htmlFor="facebook"
+                                className="block mb-2 text-md font-semibold text-gray-900"
+                            >
+                                facebook
+                            </label>
+                            <input
+                                type="text"
+                                id="facebook"
+                                name="facebook"
+                                placeholder="e.g. pathumwan"
+                                className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
+                                required
+                                onChange={(e) => setFacebook(e.target.value)}
+                            />
+                            </div>
+                            <div>
+                            <label
+                                htmlFor="instagram"
+                                className="block mb-2 text-md font-semibold text-gray-900"
+                            >
+                                instagram
+                            </label>
+                            <input
+                                type="text"
+                                id="instagram"
+                                name="instagram"
+                                placeholder="e.g. pathumwan"
+                                className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
+                                required
+                                onChange={(e) => setInstagram(e.target.value)}
+                            />
+                            </div>
                         </div>
                     </div>
                     <div className="flex justify-center">
