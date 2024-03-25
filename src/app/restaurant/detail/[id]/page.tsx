@@ -9,6 +9,7 @@ import { getOneRestaurant } from '@/lib/restaurant';
 import { useSession } from 'next-auth/react';
 import Restaurant from '@/types/restaurant';
 import { CircularProgress } from '@mui/material';
+import Link from 'next/link';
 
 const RestaurantDetailPage = ({ params }: { params: { id: string } }) => {
     const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
@@ -102,7 +103,9 @@ const RestaurantDetailPage = ({ params }: { params: { id: string } }) => {
                             </section>
                             <div className="flex justify-center">
                                 <button className="bg-redrice-yellow hover:bg-redrice-light-yellow px-5 py-3 text-white font-semibold rounded-3xl text-xl w-full lg:w-1/2 mt-8">
-                                    Book Reservation
+                                    <Link href={`/restaurant/reservation/create/${restaurant?.ID}`}>
+                                        Book Reservation
+                                    </Link>
                                 </button>
                             </div>
                         </section>
