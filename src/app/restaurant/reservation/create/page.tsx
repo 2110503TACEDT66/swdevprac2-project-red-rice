@@ -1,9 +1,12 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import { mockRestaurant } from '@/mock/restaurant';
 import Image from 'next/image';
-import UploadImage from '@/components/UploadImage';
+import ConfirmReserve from '@/components/ConfirmReserve';
 
 const CreateReservationPage = () => {
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+
     const restaurantData = mockRestaurant;
     return (
         <div className="pl-12 pr-10 w-full h-screen overflow-y-auto">
@@ -72,10 +75,20 @@ const CreateReservationPage = () => {
                         </div>
                     </div>
                     <div className="flex justify-center">
-                        <button className="bg-redrice-yellow hover:bg-redrice-light-yellow px-5 py-3 text-white font-semibold rounded-3xl text-xl w-full lg:w-1/2 mt-8">
+                        <button
+                            className="bg-redrice-yellow hover:bg-redrice-light-yellow px-5 py-3 text-white font-semibold rounded-3xl text-xl w-full lg:w-1/2 mt-8"
+                            onClick={() => {
+                                setIsPopupOpen(!isPopupOpen);
+                            }}
+                        >
                             Reserve
                         </button>
                     </div>
+                    {isPopupOpen && (
+                        <div>
+                            <ConfirmReserve restaurant={restaurantData.name} />
+                        </div>
+                    )}
                 </div>
             </main>
         </div>
