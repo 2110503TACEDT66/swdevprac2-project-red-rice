@@ -5,16 +5,19 @@ import Rating from '@mui/material/Rating';
 import { MdEdit } from 'react-icons/md';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import { getme } from '@/lib/auth';
+import { getOneRestaurant } from '@/lib/restaurant';
 import { useSession } from 'next-auth/react';
+import Link from 'next/link';
 
 interface RestaurantCardProps {
-    id: string;
+    ID: any;
     name: string;
     imageUrl: string;
 }
 
-const RestaurantCard = ({ id, name, imageUrl }: RestaurantCardProps) => {
+const RestaurantCard = ({ ID, name, imageUrl }: RestaurantCardProps) => {
     const [userRole, setUserRole] = useState('');
+    const [restaurant, setRestaurant] = useState([]);
 
     const { data: session } = useSession();
 
@@ -28,9 +31,19 @@ const RestaurantCard = ({ id, name, imageUrl }: RestaurantCardProps) => {
         fetchUsers();
     }, [session]);
 
+    // useEffect(() => {
+    //     const fetchRestaurant = async () => {
+    //         if (session?.user.token) {
+    //             const fetchRestaurant = await getOneRestaurant(ID,session.user.token);
+    //             setRestaurant(fetchRestaurant.ID);
+    //         }
+    //     };
+    //     fetchRestaurant();
+    // }, [session]);
+
     return (
         <div
-            key={id}
+            key={ID}
             className="flex p-2 border-2 rounded-xl mx-2 w-1/2 flex-col shadow-md px-0"
             style={{ minWidth: '300px', maxWidth: '600px' }}
         >
@@ -53,7 +66,7 @@ const RestaurantCard = ({ id, name, imageUrl }: RestaurantCardProps) => {
                     <Rating name="read-only" value={5} readOnly />
                     <div className="space-x-1 items-center flex justify-center">
                         <button className="px-4 py-1 bg-redrice-yellow hover:bg-redrice-light-yellow text-white font-semibold rounded-md">
-                            Detail
+                            <Link href={`/restaurant/detail/${ID}`}>Detail</Link>
                         </button>
                         {userRole === 'admin' && (
                             <div>
