@@ -1,11 +1,53 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import UploadImage from '@/components/UploadImage';
 import ConfirmCreateRes from '@/components/ConfirmCreateRes';
+import { createRestaurant } from '@/lib/restaurant';
+import { useSession } from 'next-auth/react';
 
 const CreateReservationPage = () => {
+    const { data: session } = useSession();
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [restaurant, setRestaurant] = useState<string>('');
+    const [image, setImage] = useState<File | null>(null);
+    const [address, setAddress] = useState('');
+    const [telephone, setTelephone] = useState('');
+    const [openTime, setOpenTime] = useState('');
+    const [closeTime, setCloseTime] = useState('');
+
+    const formRef = useRef<HTMLFormElement>(null);
+    
+    const onFileSelect = (file: File) => {
+        setImage(file);
+    }
+
+    const handleConfirm = async () => {
+        const formData = new FormData();
+        formData.append('name', restaurant);
+        if (image) formData.append('image', image);
+        formData.append('address', address);
+        formData.append('telephone', telephone);
+        formData.append('openTime', openTime);
+        formData.append('closeTime', closeTime);
+        try {
+            if (session?.user?.token) {
+                console.log(session.user.role)
+                const response = await createRestaurant(formData, session.user.token);
+                console.log('Create restaurant successful:', response);
+            } else {
+                throw new Error('No token found');
+            }
+        
+        } catch (error) {
+            console.error('Failed to create restaurant:', error);
+        } finally {
+            setIsPopupOpen(false); 
+        }
+    };
+    
+    const handleCancel = () => {
+        setIsPopupOpen(false); 
+    };
 
     return (
         <div className="pl-12 pr-10 w-full h-screen overflow-y-auto">
@@ -13,9 +55,9 @@ const CreateReservationPage = () => {
                 Create Restaurant
             </h1>
 
-            <main className="w-full lg:gap-10 flex flex-row items-center flex-wrap lg:flex-nowrap">
+            <form ref = {formRef} className="w-full lg:gap-10 flex flex-row items-center flex-wrap lg:flex-nowrap">
                 <div className="w-full lg:w-1/2 flex justify-center mt-5 lg:mt-0">
-                    <UploadImage />
+                    <UploadImage onFileSelect={onFileSelect}/>
                 </div>
 
                 <div className="rounded-[1rem] p-5 md:p-10 w-full lg:w-1/2 text-lg shadow-lg border-2 mt-6 lg:mt-0 mb-6">
@@ -55,6 +97,7 @@ const CreateReservationPage = () => {
                                 placeholder="eg. Lu Lu พระรามได้ (ไทยดี) สาขา CentralWorld (ชั้น 7) 7th Fl., 999/9 Rama I Road, Pathumwan, Pathumwan, Bangkok 10330, Thailand"
                                 className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
                                 required
+                                onChange={(e) => setAddress(e.target.value)}
                             ></textarea>
                         </div>
                         {/* Telephone input field */}
@@ -72,6 +115,7 @@ const CreateReservationPage = () => {
                                 placeholder="e.g. 0922698678"
                                 className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
                                 required
+                                onChange={(e) => setTelephone(e.target.value)}
                             />
                         </div>
 
@@ -90,6 +134,7 @@ const CreateReservationPage = () => {
                                 placeholder="e.g. 13:00"
                                 className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
                                 required
+                                onChange={(e) => setOpenTime(e.target.value)}
                             />
                         </div>
 
@@ -108,26 +153,32 @@ const CreateReservationPage = () => {
                                 placeholder="e.g. 2:00 am"
                                 className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
                                 required
+                                onChange={(e) => setCloseTime(e.target.value)}
                             />
                         </div>
                     </div>
                     <div className="flex justify-center">
                         <button
+                            type="button"
                             className="bg-redrice-yellow hover:bg-redrice-light-yellow px-5 py-3 text-white font-semibold rounded-3xl text-xl w-full lg:w-1/2 mt-8"
                             onClick={() => {
-                                setIsPopupOpen(!isPopupOpen);
+                                setIsPopupOpen(true);
                             }}
                         >
                             Create Restaurant
                         </button>
                     </div>
                     {isPopupOpen && (
-                        <div>
-                            <ConfirmCreateRes restaurant={restaurant} />
-                        </div>
+                <div>
+                    <ConfirmCreateRes 
+                        restaurant={restaurant} 
+                        onConfirm={handleConfirm}
+                        onCancel={handleCancel}
+                    />
+                </div>
                     )}
                 </div>
-            </main>
+            </form>
         </div>
     );
 };
