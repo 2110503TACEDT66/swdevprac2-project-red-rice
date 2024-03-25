@@ -168,9 +168,7 @@ const CreateReservationPage = () => {
                             Create Restaurant
                         </button>
                     </div>
-                </div>
-            </form>
-            {isPopupOpen && (
+                    {isPopupOpen && (
                 <div >
                     <ConfirmCreateRes 
                         restaurant={restaurant} 
@@ -178,7 +176,9 @@ const CreateReservationPage = () => {
                         onCancel={handleCancel}
                     />
                 </div>
-            )}
+                    )}
+                </div>
+            </form>
         </div>
     );
 };
