@@ -13,15 +13,15 @@ const page = () => {
     const { data: session } = useSession();
 
     useEffect(() => {
-        const fetchRestaurants = async () => {
+        const fetchUsers = async () => {
             if (session?.user.token) {
                 const user = await getme(session.user.token);
                 setUserRole(user.role);
             }
         };
-        fetchRestaurants();
+        fetchUsers();
     }, [session]);
-    
+
     return (
         <main className="pl-12 pr-10 w-full h-screen overflow-y-auto">
             <div className="flex justify-between items-center flex-wrap">

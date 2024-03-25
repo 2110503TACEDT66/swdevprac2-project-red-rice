@@ -19,13 +19,13 @@ const RestaurantCard = ({ id, name, imageUrl }: RestaurantCardProps) => {
     const { data: session } = useSession();
 
     useEffect(() => {
-        const fetchRestaurants = async () => {
+        const fetchUsers = async () => {
             if (session?.user.token) {
                 const user = await getme(session.user.token);
                 setUserRole(user.role);
             }
         };
-        fetchRestaurants();
+        fetchUsers();
     }, [session]);
 
     return (
