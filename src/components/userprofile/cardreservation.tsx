@@ -20,9 +20,9 @@ export default function CardReservation({
                     className="object-cover rounded-lg "
                 />
             </div>
-            <div className="w-[200px]  m-3  self-center">{name}</div>
-            <div className="w-[60%]  relative right-0  m-3 self-center flex flex-row justify-end ">
-                <div className="w-[200px] m-3  self-center">{time}</div>
+            <div className="w-[200px]  m-3  self-center text-sm">{name}</div>
+            <div className="w-[60%]  relative right-0  m-3 self-center flex flex-row justify-end text-sm">
+                <div className="tablet:w-[200px] m-3 ml-5 self-cente text-sm w-[100px]">{time}</div>
             </div>
         </div>
     );
