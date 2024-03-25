@@ -57,11 +57,11 @@ export default function ReservationCard({id,name,table,time,state,picture}:{id:s
                 <div className='w-[15%] m-3  font-semibold text-center'>{table} Tables</div> 
                 <div className='w-[15%] m-3  font-semibold text-center'>{time}</div> 
                 <div className={`w-[42%] tablet:w-[27%] h-[35%] self-center m-1  ${getBackgroundColor()} p-1 text-white text-center rounded-full text-sm tablet:text-xl bold shadow-lg font-semibold items-center`}>{state}</div>
-                    <div className="w-[35px] h-[35px]  bg-red-500 rounded-full hover:bg-red-700 m-3  p-3">
+                    <div className="w-[35px] h-[35px]  bg-red-500 rounded-full hover:bg-red-700 m-3  p-3 ">
 
                         <div className="w-full h-full flex justify-center items-center " onClick={()=>dispatchshow({type:"show"})}>
                             <div className='w-[5px] h-[5px] relative rounded-lg  p-3 self-center '>
-                                <Image src={ '/img/component/close.png' }
+                                <Image src={ '/img/component/close-500.png' }
                                 alt='Product Picture'
                                 fill={true}
                                 className= 'object-cover rounded-lg '
