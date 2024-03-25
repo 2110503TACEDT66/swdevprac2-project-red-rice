@@ -23,7 +23,7 @@ export default function CardPanel() {
     const isNextDisabled = page === totalPages;
 
     return (
-        <div className="w-full h-screen flex flex-col items-center mt-5 ">
+        <div className="w-full h-screen flex flex-col items-center mt-5">
             {visibleData.map((item) => (
                 <Card
                     key={item.id}

@@ -45,7 +45,7 @@ export default function Card({
                 <button className='p-1 rounded-full bg-redrice-yellow hover:bg-redrice-light-yellow text-white'>
                 <IoInformation />
                 </button>
-
+                    
                 </Link>
                 </div>
             <div className="hidden md:flex">

@@ -2,6 +2,7 @@ import React from 'react';
 import Restaurants from '@/components/Restaurants';
 import { FaPlus } from 'react-icons/fa';
 import Searchbox from '@/components/Searchbox';
+import Link from 'next/link';
 
 const page = () => {
     return (
@@ -12,7 +13,9 @@ const page = () => {
                         Choose Restaurant
                     </h1>
                     <button className="rounded-full p-3 bg-redrice-yellow hover:bg-redrice-light-yellow text-white">
-                        <FaPlus />
+                        <Link href="/restaurant/create">
+                            <FaPlus />
+                        </Link>
                     </button>
                 </div>
                 <div className="mt-3 md:mt-0 w-full md:w-1/3">
