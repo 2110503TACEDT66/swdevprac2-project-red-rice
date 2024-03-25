@@ -12,11 +12,10 @@ export default function Reservation(){
         return <div>loading...</div>
     }
     useEffect(() => {
+        if (!session) return;
         const fetchReservations = async () => {
-            if (session?.user.token) {
-                const fetchedReservations = await getMyReservations(session.user.token);
-                setReservations(fetchedReservations);
-            }
+            const fetchedReservations = await getMyReservations(session.user.token);
+            setReservations(fetchedReservations);
         };
         fetchReservations();
 
