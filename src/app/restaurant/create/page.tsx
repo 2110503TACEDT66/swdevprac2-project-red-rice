@@ -27,6 +27,7 @@ const CreateReservationPage = () => {
         const formData = new FormData();
         formData.append('name', restaurant);
         if (image) formData.append('image', image);
+        formData.append('description', description);
         formData.append('address', address);
         formData.append('telephone', telephone);
         formData.append('openTime', openTime);
