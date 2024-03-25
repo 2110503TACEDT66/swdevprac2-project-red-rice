@@ -1,17 +1,25 @@
 'use client';
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useSession } from 'next-auth/react';
 import { IoClose, IoMenu } from 'react-icons/io5';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+
     const [login, setLogin] = useState(false);
 
     const toggleNavbar = () => {
         setIsOpen(!isOpen);
     };
-
+    const { data: session } = useSession();
+    useEffect(() => {
+        if (session) {
+            setLogin(true);
+        }
+    },[]);
+    
     return (
         <nav className="relative">
             <div className="mx-auto px-4 md:px-6">
