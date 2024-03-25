@@ -15,7 +15,7 @@ export default async function profile({ params }: { params: { id: string } }) {
     return (
         <main className="">
             <SubBar text="Punza's Profile"/>
-            {/* <div className="w-[100%] flex flex-row justify-center ">
+            <div className="w-[100%] flex flex-row justify-center ">
                 <CardProfile
                     profile={profile}
                 ></CardProfile>
@@ -26,7 +26,7 @@ export default async function profile({ params }: { params: { id: string } }) {
                     <PersonalDetails profile={profile}></PersonalDetails>
                     <Reservation></Reservation>
                 </div>
-            </div> */}
+            </div>
         </main>
     );
 }

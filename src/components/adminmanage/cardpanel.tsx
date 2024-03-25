@@ -6,6 +6,7 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import User from '@/types/user';
 export default function CardPanel({data}:{data:Array<User>}) {
     const mockData = data;
+    console.log(mockData)
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(10);
 
@@ -26,8 +27,8 @@ export default function CardPanel({data}:{data:Array<User>}) {
         <div className="w-full h-screen flex flex-col items-center mt-5">
             {visibleData.map((item) => (
                 <Card
-                    key={item.id}
-                    id={item.id}
+                    key={item.ID}
+                    id={item.ID}
                     name={item.name}
                     role={item.role}
                     email={item.email}
