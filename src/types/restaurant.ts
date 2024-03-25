@@ -1,5 +1,5 @@
 interface Restaurant {
-    id: string;
+    ID: any;
     name: string;
     address: string;
     description: string;
