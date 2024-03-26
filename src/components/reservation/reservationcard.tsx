@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 export default function ReservationCard({
     id,
+    forDelete,
     name,
     table,
     time,
@@ -15,6 +16,7 @@ export default function ReservationCard({
     picture,
 }: {
     id: number;
+    forDelete: string;
     name: string;
     table: number;
     time: string;
@@ -46,8 +48,11 @@ export default function ReservationCard({
         }
     };
     const [resultShow, dispatchShow] = useReducer(reducerShow, show);
+
     const { data: session } = useSession();
+
     const router = useRouter();
+
     const onConfirm = async () => {
         dispatchShow({ type: 'hide' });
         if (!session?.user.token) return;
@@ -58,9 +63,31 @@ export default function ReservationCard({
         router.push('/reservation/done');
     };
 
-    const hour =(parseInt(time.split(':')[0])+7)%24
-    const minute =parseInt(time.split(':')[1])
-    const newDate = ("00"+hour.toString()).slice(-2)+":"+("00"+minute.toString()).slice(-2)
+    const hour = (parseInt(time.split(':')[0]) + 7) % 24;
+    const minute = parseInt(time.split(':')[1]);
+    const newDate =
+        ('00' + hour.toString()).slice(-2) +
+        ':' +
+        ('00' + minute.toString()).slice(-2);
+
+    const [deleted, setDeleted] = useState(false);
+
+    const handleDelete = async () => {
+        if (!session?.user.token) return;
+
+        try {
+            await deleteReservation(session.user.token, parseInt(forDelete));
+            setDeleted(true);
+        } catch (error) {
+            console.error('Failed to delete reservation', error);
+        }
+    };
+
+    if (deleted) {
+        window.location.reload();
+        // return null;
+    }
+
     return (
         <div className="h-auto w-full rounded-[1rem] shadow-md m-2 flex flex-row py-2 md:py-7 items-center justify-between pr-5 pl-5 border-2 flex-wrap">
             {resultShow && (
@@ -96,12 +123,13 @@ export default function ReservationCard({
                 >
                     {state}
                 </div>
-                <div
+                <button
                     className="bg-redrice-red rounded-full hover:bg-red-700 flex justify-center items-center text-white text-xl p-3"
-                    onClick={() => dispatchShow({ type: 'show' })}
+                    // onClick={() => dispatchShow({ type: 'show' })}
+                    onClick={handleDelete}
                 >
                     <RiDeleteBin5Fill />
-                </div>
+                </button>
             </div>
         </div>
     );

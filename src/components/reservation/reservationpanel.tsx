@@ -46,6 +46,7 @@ export default function ReservationPanel({ data }: { data: reservation[] }) {
                         <ReservationCard
                             key={key}
                             id={key+1}
+                            forDelete={item.ID}
                             name={item.restaurant.name}
                             table={item.table}
                             time={item.dateTime.split('T')[1].substring(0, 5)}
