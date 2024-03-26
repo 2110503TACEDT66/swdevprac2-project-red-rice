@@ -11,7 +11,7 @@ const Home = () => {
             <div className="mt-5 flex justify-start flex-col">
                 <div className="lg:hidden flex justify-center mb-10">
                     <Image
-                        src="/img/restaurant_bg.png"
+                        src="/img/restaurant_bg.PNG"
                         alt="restaurant"
                         width={550}
                         height={550}
@@ -34,7 +34,7 @@ const Home = () => {
             </div>
             <div className="hidden lg:block lg:pt-24 h-auto rounded-lg">
                 <Image
-                    src="/img/restaurant_bg.png"
+                    src="/img/restaurant_bg.PNG"
                     alt="restaurant"
                     width={550}
                     height={550}
