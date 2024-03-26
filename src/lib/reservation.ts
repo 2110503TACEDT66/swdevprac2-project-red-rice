@@ -42,6 +42,8 @@ import { convertTimeToISO } from '@/utils/dateConverter';
 export interface createReservationRequest {
     dateTime: string;
     restaurantId: number;
+    tableNum: number;
+    exitTime: string;
 }
 
 const createReservation = async (
@@ -49,13 +51,15 @@ const createReservation = async (
     reservationRequest: createReservationRequest
 ) => {
     try {
-        console.log('Reservation request:', reservationRequest);
+        
         const dateTimeISO = convertTimeToISO(reservationRequest.dateTime);
+        const exitTimeISO = convertTimeToISO(reservationRequest.exitTime);
         const response = await axios.post(
             `https://redrice-backend-go.onrender.com/api/v1/reservations`,
             {
                 ...reservationRequest,
                 dateTime: dateTimeISO,
+                exitTime: exitTimeISO,
             },
             {
                 headers: {
@@ -80,7 +84,7 @@ const getMyReservations = async (token: string) => {
                 },
             }
         );
-        console.log('User:', user.data);
+        
         const id = user.data.ID;
         const response = await axios.get(
             `https://redrice-backend-go.onrender.com/api/v1/users/${id}/reservations`,
@@ -116,18 +120,20 @@ const deleteReservation = async (token: string, reservationId: number) => {
     }
 };
 
-const updateReservation = async (token: string, id: string, dateTime: any) => {
+const updateReservation = async (token: string, id: string, dateTime: any, tableNum: number, exitTime: any) => {
     try {
 
         const response = await axios.put(
             `https://redrice-backend-go.onrender.com/api/v1/reservations/${id}`,
             {
+                dateTime: convertTimeToISO(dateTime),
+                tableNum: tableNum,
+                exitTime: convertTimeToISO(exitTime),
+            },
+            {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
-                body: {
-                    dateTime: dateTime,
-                }
             }
         );
 

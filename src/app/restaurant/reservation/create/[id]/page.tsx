@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { mockRestaurant } from '@/mock/restaurant';
+import { convertTimeToISO } from '@/utils/dateConverter';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
@@ -34,10 +34,14 @@ const CreateReservationPage = ({ params }: { params: { id: string } }) => {
         if (!session?.user.token) return;
 
         try {
+            console.log('formData:', formData);
             const request: createReservationRequest = {
                 dateTime: formData.arrivalTime,
                 restaurantId: parseInt(params.id),
+                tableNum: parseInt(formData.tableNumber),
+                exitTime: formData.leaveTime,
             };
+            console.log('Reservation request:', request);
             const response = await createReservation(
                 session.user.token,
                 request

@@ -3,7 +3,7 @@ import { convertTimeToISO } from "../utils/dateConverter";
 describe('convertTimeToISO', () => {
     it('converts a time string to ISO format for the current date, accounting for timezone', () => {
       const inputTime = '14:30';
-      const isoString = convertTimeToISO(inputTime);
+      const isoString = convertTimeToISO(inputTime) as string;
       const dateFromISO = new Date(isoString);
   
       // Get local time from the ISO date

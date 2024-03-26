@@ -3,57 +3,47 @@ import React from 'react';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
-import { updateRestaurant } from '@/lib/restaurant';
+import { updateReservation } from '@/lib/reservation';
 import { useRouter } from 'next/navigation';
 import ConfirmCreateRes from '@/components/ConfirmCreateRes';
 import { CircularProgress } from '@mui/material';
-import { updateReservation } from '@/lib/reservation';
-import { convertTimeToISO } from '@/utils/dateConverter';
 import { getReservation } from '@/lib/reservation';
 
 const UpdateReservationPage = ({ params }: { params: { id: string } }) => {
     const { data: session } = useSession();
     const router = useRouter();
-    const [restaurantData, setRestaurantData] = useState<any>();
+    const [reservationData, setreservationData] = useState<any>();
     const [modalOpen, setModalOpen] = useState(false);
 
     useEffect(() => {
-        const fetchRestaurantData = async () => {
+        const fetchReservationData = async () => {
             if (!session?.user.token || !params.id) return;
             const data = await getReservation(session.user.token, params.id);
-            setRestaurantData(data);
+            setreservationData(data);
         };
-        fetchRestaurantData();
+        fetchReservationData();
     }, [session, params.id]);
 
 
     const handleInputChange = (e: any) => {
         const { name, value } = e.target;
-        if (name == 'arrivalTime') {
-            const dateTimeISO = convertTimeToISO(value);
-            setRestaurantData((prevState: any) => ({
-                ...prevState,
-                dateTime: dateTimeISO,
-            }));
-            return;
-        }
-        setRestaurantData((prevState: any) => ({
+        setreservationData((prevState: any) => ({
             ...prevState,
             [name]: value,
         }));
     };
 
     const onConfirm = async () => {
-        console.log('Restaurant data:', restaurantData);
+        console.log('reservation data:', reservationData);
         if (!session?.user.token) return;
         try {
-            const data = await updateReservation(session?.user.token, params.id, {
-                dateTime: restaurantData.arrivalTime,
-            });
-            console.log('Updated reservation:', data);
-            
+            const data = await updateReservation(session?.user.token, params.id, 
+                reservationData.arrivalTime,
+                parseInt(reservationData.tableNumber),
+                reservationData.leaveTime,
+            );
         } catch (error) {
-            console.error('Failed to update restaurant:', error);
+            console.error('Failed to update reservation:', error);
         } finally {
             setModalOpen(false);
             router.push(
@@ -62,7 +52,7 @@ const UpdateReservationPage = ({ params }: { params: { id: string } }) => {
         }
     };
 
-    if (!restaurantData) {
+    if (!reservationData) {
         return (
             <div className="h-[700px] flex justify-center items-center">
                 <CircularProgress />
@@ -73,7 +63,7 @@ const UpdateReservationPage = ({ params }: { params: { id: string } }) => {
     return (
         <main className="pl-12 pr-10 w-full h-screen overflow-y-auto">
             <h1 className="text-3xl md:text-4xl font-semibold">
-                Edit {restaurantData.name}
+                Edit {reservationData.name}
             </h1>
 
             <section className="w-full lg:gap-10 flex flex-row items-center flex-wrap lg:flex-nowrap">
@@ -82,7 +72,7 @@ const UpdateReservationPage = ({ params }: { params: { id: string } }) => {
                     </div>
                     <Image
                         src={'https://i.pinimg.com/564x/a5/12/d1/a512d1f51eccf437d733ea952beb88b9.jpg'}
-                        alt={restaurantData.name}
+                        alt={reservationData.name}
                         width={500}
                         height={0}
                         className="rounded-2xl object-cover w-full md:w-2/3 lg:w-full h-[300px] md:h-[300px] lg:h-[500px]"
@@ -124,6 +114,22 @@ const UpdateReservationPage = ({ params }: { params: { id: string } }) => {
                                 onChange={handleInputChange}
                             />
                         </div>
+                        <div>
+                            <label
+                                htmlFor="leaveTime"
+                                className="block mb-2 text-md font-semibold text-gray-900"
+                            >
+                                When will you expect to leave?
+                            </label>
+                            <input
+                                type="time"
+                                id="leaveTime"
+                                name="leaveTime"
+                                className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-2xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1"
+                                required
+                                onChange={handleInputChange}
+                            />
+                        </div>
                     </div>
                     <div className="flex justify-center">
                         <button
@@ -136,7 +142,7 @@ const UpdateReservationPage = ({ params }: { params: { id: string } }) => {
                     </div>
                     {modalOpen && (
                         <ConfirmCreateRes
-                            restaurant={restaurantData.name}
+                            restaurant={reservationData.restaurant.name}
                             onConfirm={onConfirm}
                             onCancel={() => setModalOpen(false)}
                         />
