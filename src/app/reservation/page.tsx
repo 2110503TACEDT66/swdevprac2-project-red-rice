@@ -21,7 +21,7 @@ export default function Reservation() {
     }, [session]);
 
     return (
-        <div>
+        <div className="pl-12 pr-10 w-full h-screen overflow-y-auto">
             {reservationData ? (
                 <div className="space-y-6">
                     <SubBar text={'Your Reservation'}></SubBar>
