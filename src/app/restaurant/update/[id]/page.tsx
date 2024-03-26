@@ -9,6 +9,7 @@ import { updateRestaurant } from '@/lib/restaurant';
 import { useRouter } from 'next/navigation';
 import ConfirmCreateRes from '@/components/ConfirmCreateRes';
 import axios from 'axios';
+import { CircularProgress } from '@mui/material';
 
 const CreateReservationPage = ({ params }: { params: { id: string } }) => {
     const { data: session } = useSession();
@@ -74,7 +75,14 @@ const CreateReservationPage = ({ params }: { params: { id: string } }) => {
         }
     };
 
-    if (!restaurantData) return null;
+    if (!restaurantData) {
+        return (
+            <div className="h-[700px] flex justify-center items-center">
+                <CircularProgress />
+            </div>
+        );
+    }
+
     return (
         <main className="pl-12 pr-10 w-full h-screen overflow-y-auto">
             <h1 className="text-3xl md:text-4xl font-semibold">
