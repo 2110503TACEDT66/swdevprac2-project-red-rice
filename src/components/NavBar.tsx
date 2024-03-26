@@ -7,6 +7,7 @@ import { IoClose, IoMenu } from 'react-icons/io5';
 import { getme } from '@/lib/auth';
 import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { FiLogOut } from 'react-icons/fi';
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [login, setLogin] = useState(false);
@@ -96,10 +97,11 @@ const Navbar = () => {
                                         />
                                     </Link>
                                     <button
+                                        title="Sign Out"
                                         onClick={handleSignOut}
-                                        className="rounded-lg text-xl lg:text-xl font-semibold hover:text-white bg-redrice-yellow hover:bg-redrice-light-yellow px-3 py-2 text-white"
+                                        className="rounded-lg text-xl lg:text-xl font-semibold hover:text-white bg-redrice-yellow hover:bg-redrice-light-yellow p-2 text-white"
                                     >
-                                        Sign Out
+                                        <FiLogOut />
                                     </button>
                                 </div>
                             </div>
