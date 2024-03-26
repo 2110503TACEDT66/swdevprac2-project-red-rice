@@ -76,33 +76,26 @@ const CreateReservationPage = ({ params }: { params: { id: string } }) => {
 
     if (!restaurantData) return null;
     return (
-        <div>
-            <header className="flex items-center">
-                <h2 className="font-semibold text-2xl">
-                    Edit {restaurantData.name}
-                </h2>
-            </header>
-            <main className="py-10 flex justify-center lg:space-x-16 w-screen flex-wrap lg:flex-nowrap lg:px-44 space-y-10 lg:space-y-0">
-                <section className="w-full lg:w-1/2">
-                    <div className="relative w-full h-[384px] rounded-2xl overflow-hidden">
-                        <Image
-                            src={restaurantData.imageUrl} // Fallback to a default image if none is provided
-                            alt={restaurantData.name}
-                            layout="fill"
-                            objectFit="cover"
-                            className="rounded-2xl"
-                        />
+        <main className="pl-12 pr-10 w-full h-screen overflow-y-auto">
+            <h1 className="text-3xl md:text-4xl font-semibold">
+                Edit {restaurantData.name}
+            </h1>
 
-                        {/* Overlay Upload Button */}
-                        <div className="absolute inset-0 flex items-center justify-center opacity-80">
-                            <UploadImage onFileSelect={handleFileSelect} />
-                            <div className="absolute bottom-4 right-4 bg-white p-2 rounded-full shadow-lg">
-                                <BiPencil size={24} className="text-gray-800" />
-                            </div>
-                        </div>
+            <section className="w-full lg:gap-10 flex flex-row items-center flex-wrap lg:flex-nowrap">
+                <div className="w-full lg:w-1/2 flex justify-center mt-5 lg:mt-0 relative">
+                    <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-50">
+                        <UploadImage onFileSelect={handleFileSelect} />
                     </div>
-                </section>
-                <section className="mx-auto rounded-lg p-12 w-full lg:w-1/2 text-lg shadow-lg space-y-10">
+                    <Image
+                        src={restaurantData.imageUrl}
+                        alt={restaurantData.name}
+                        width={500}
+                        height={0}
+                        className="rounded-2xl object-cover w-full md:w-2/3 lg:w-full h-[300px] md:h-[300px] lg:h-[500px]"
+                    />
+                </div>
+
+                <div className="rounded-[1rem] p-5 md:p-10 w-full lg:w-1/2 text-lg shadow-lg border-2 mt-6 lg:mt-0 mb-6">
                     <div className="space-y-4">
                         <div>
                             <label
@@ -116,7 +109,24 @@ const CreateReservationPage = ({ params }: { params: { id: string } }) => {
                                 id="restaurantName"
                                 name="restaurantName"
                                 placeholder="e.g. Mo-Mo-Paradise"
-                                className="bg-gray-50 border-2 font-light text-md border-gray-500 text-gray-900 rounded-2xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
+                                className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
+                                required
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                        <div>
+                            <label
+                                htmlFor="description"
+                                className="block mb-2 text-md font-semibold text-gray-900"
+                            >
+                                description
+                            </label>
+                            <input
+                                type="textarea"
+                                id="description"
+                                name="description"
+                                placeholder=""
+                                className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
                                 required
                                 onChange={handleInputChange}
                             />
@@ -132,7 +142,7 @@ const CreateReservationPage = ({ params }: { params: { id: string } }) => {
                                 id="address"
                                 name="address"
                                 placeholder="eg. Lu Lu พระรามได้ (ไทยดี) สาขา CentralWorld (ชั้น 7) 7th Fl., 999/9 Rama I Road, Pathumwan, Pathumwan, Bangkok 10330, Thailand"
-                                className="bg-gray-50 border-2 font-light text-md border-gray-500 text-gray-900 rounded-2xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
+                                className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
                                 required
                                 onChange={handleInputChange}
                             ></textarea>
@@ -149,7 +159,7 @@ const CreateReservationPage = ({ params }: { params: { id: string } }) => {
                                 id="telephone"
                                 name="telephone"
                                 placeholder="e.g. 0922698678"
-                                className="bg-gray-50 border-2 font-light text-md border-gray-500 text-gray-900 rounded-2xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
+                                className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
                                 required
                                 onChange={handleInputChange}
                             />
@@ -166,11 +176,12 @@ const CreateReservationPage = ({ params }: { params: { id: string } }) => {
                                 id="openTime"
                                 name="openTime"
                                 placeholder="e.g. 13:00"
-                                className="bg-gray-50 border-2 font-light text-md border-gray-500 text-gray-900 rounded-2xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
+                                className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
                                 required
                                 onChange={handleInputChange}
                             />
                         </div>
+
                         <div>
                             <label
                                 htmlFor="closeTime"
@@ -183,29 +194,68 @@ const CreateReservationPage = ({ params }: { params: { id: string } }) => {
                                 id="closeTime"
                                 name="closeTime"
                                 placeholder="e.g. 2:00 am"
-                                className="bg-gray-50 border-2 font-light text-md border-gray-500 text-gray-900 rounded-2xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
+                                className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
                                 required
                                 onChange={handleInputChange}
                             />
                         </div>
+
+                        <div className="flex space-x-4">
+                            <div>
+                                <label
+                                    htmlFor="facebook"
+                                    className="block mb-2 text-md font-semibold text-gray-900"
+                                >
+                                    facebook
+                                </label>
+                                <input
+                                    type="text"
+                                    id="facebook"
+                                    name="facebook"
+                                    placeholder="e.g. pathumwan"
+                                    className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
+                                    required
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    htmlFor="instagram"
+                                    className="block mb-2 text-md font-semibold text-gray-900"
+                                >
+                                    instagram
+                                </label>
+                                <input
+                                    type="text"
+                                    id="instagram"
+                                    name="instagram"
+                                    placeholder="e.g. pathumwan"
+                                    className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
+                                    required
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+                        </div>
                     </div>
-                    <button
-                        className="bg-redrice-blue px-5 py-3 text-white font-semibold rounded-3xl text-xl w-full lg:w-1/2 "
-                        type="button"
-                        onClick={() => setModalOpen(true)}
-                    >
-                        Edit Restaurant
-                    </button>
-                </section>
-                {modalOpen && (
-                    <ConfirmCreateRes
-                        restaurant={restaurantData.name}
-                        onConfirm={onConfirm}
-                        onCancel={() => setModalOpen(false)}
-                    />
-                )}
-            </main>
-        </div>
+                    <div className="flex justify-center">
+                        <button
+                            type="button"
+                            className="bg-redrice-blue hover:bg-blue-400 px-5 py-3 text-white font-semibold rounded-3xl text-xl w-full lg:w-1/2 mt-8"
+                            onClick={() => setModalOpen(true)}
+                        >
+                            Edit Restaurant
+                        </button>
+                    </div>
+                    {modalOpen && (
+                        <ConfirmCreateRes
+                            restaurant={restaurantData.name}
+                            onConfirm={onConfirm}
+                            onCancel={() => setModalOpen(false)}
+                        />
+                    )}
+                </div>
+            </section>
+        </main>
     );
 };
 
