@@ -14,7 +14,7 @@ export default function ReservationCard({
     state,
     picture,
 }: {
-    id: string;
+    id: number;
     name: string;
     table: number;
     time: string;
@@ -51,10 +51,7 @@ export default function ReservationCard({
     const onConfirm = async () => {
         dispatchShow({ type: 'hide' });
         if (!session?.user.token) return;
-        const response = await deleteReservation(
-            session.user.token,
-            parseInt(id)
-        );
+        const response = await deleteReservation(session.user.token, id);
         if (response) {
             console.log('Delete Success');
         }
@@ -70,7 +67,7 @@ export default function ReservationCard({
                 />
             )}
             <div className="flex flex-row items-center flex-wrap justify-center gap-5 md:gap-0 mb-5 md:mb-0">
-                <div className='flex flex-row items-center'>
+                <div className="flex flex-row items-center">
                     <h1 className="mr-5 md:mr-10">{id}</h1>
                     <div className="flex flex-row gap-5 md:gap-10 mr-3 md:mr-10 items-center flex-wrap">
                         <Image

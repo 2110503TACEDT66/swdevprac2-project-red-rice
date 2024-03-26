@@ -43,9 +43,9 @@ export default function ReservationPanel({ data }: { data: reservation[] }) {
                     {data.map((item, key) => (
                         <ReservationCard
                             key={key}
-                            id={item.ID}
+                            id={key+1}
                             name={item.restaurant.name}
-                            table={1}
+                            table={item.table}
                             time={item.dateTime.split('T')[1].substring(0, 5)}
                             state={'Pending'}
                             picture={item.restaurant.imageUrl}
