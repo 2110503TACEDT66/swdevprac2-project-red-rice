@@ -3,6 +3,12 @@
     "globals": {
         "React": "readonly"
     },
+    "env": {
+        "browser": true,
+        "node": true,
+        "es2021": true,
+        "jest": true
+    },
     "rules": {
         "no-unused-vars": [
             1,
