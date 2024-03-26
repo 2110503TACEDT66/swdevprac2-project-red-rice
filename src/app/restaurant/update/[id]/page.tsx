@@ -112,6 +112,7 @@ const CreateReservationPage = ({ params }: { params: { id: string } }) => {
                                 className="bg-gray-50 border-2 font-light text-md border-gray-200 text-gray-900 rounded-xl focus:ring-redrice-yellow focus:border-redrice-yellow block w-full px-3 py-1.5"
                                 required
                                 onChange={handleInputChange}
+                     
                             />
                         </div>
                         <div>

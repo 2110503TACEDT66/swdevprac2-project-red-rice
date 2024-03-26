@@ -21,6 +21,8 @@ export default function ReservationPanel({ data }: { data: reservation[] }) {
 
     const isPreviousDisabled = page === 1;
     const isNextDisabled = page === totalPages;
+
+
     return (
         <>
             {data.length === 0 ? (
@@ -45,7 +47,7 @@ export default function ReservationPanel({ data }: { data: reservation[] }) {
                             key={key}
                             id={item.ID}
                             name={item.restaurant.name}
-                            table={1}
+                            table={item.table}
                             time={item.dateTime.split('T')[1].substring(0, 5)}
                             state={'Pending'}
                             picture={item.restaurant.imageUrl}
