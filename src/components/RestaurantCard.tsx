@@ -8,6 +8,7 @@ import { getme } from '@/lib/auth';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { deleteRestaurant } from '@/lib/restaurant';
+import { CircularProgress } from '@mui/material';
 
 interface RestaurantCardProps {
     ID: any;
@@ -47,6 +48,14 @@ const RestaurantCard = ({ ID, name, imageUrl }: RestaurantCardProps) => {
         return null;
     }
 
+    if (!session) {
+        return (
+            <div className="h-[700px] flex justify-center items-center">
+                <CircularProgress />
+            </div>
+        );
+    }
+
     return (
         <div
             key={ID}
@@ -79,9 +88,9 @@ const RestaurantCard = ({ ID, name, imageUrl }: RestaurantCardProps) => {
                         {userRole === 'admin' && (
                             <div>
                                 <Link href={`/restaurant/update/${ID}`}>
-                                <button className="rounded-full p-1 bg-redrice-blue text-white hover:bg-blue-400">
-                                    <MdEdit />
-                                </button>
+                                    <button className="rounded-full p-1 bg-redrice-blue text-white hover:bg-blue-400">
+                                        <MdEdit />
+                                    </button>
                                 </Link>
                                 <button
                                     className="rounded-full p-1 bg-redrice-red text-white hover:bg-red-400"

@@ -6,6 +6,7 @@ import Searchbox from '@/components/Searchbox';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { getme } from '@/lib/auth';
+import { CircularProgress } from '@mui/material';
 
 const Page = () => {
     const [userRole, setUserRole] = useState('');
@@ -21,6 +22,12 @@ const Page = () => {
         };
         fetchUsers();
     }, [session]);
+
+    <div className="pl-12 pr-10 w-full h-screen overflow-y-auto">
+        <div className="h-[700px] flex justify-center items-center">
+            <CircularProgress />
+        </div>
+    </div>;
 
     return (
         <main className="pl-12 pr-10 w-full h-screen overflow-y-auto">

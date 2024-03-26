@@ -8,6 +8,7 @@ import ConfirmReserve from '@/components/ConfirmReserve';
 import { getRestaurantById } from '@/lib/restaurant';
 import { createReservation } from '@/lib/reservation';
 import { createReservationRequest } from '@/lib/reservation';
+import { CircularProgress } from '@mui/material';
 
 const CreateReservationPage = ({ params }: { params: { id: string } }) => {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -66,6 +67,14 @@ const CreateReservationPage = ({ params }: { params: { id: string } }) => {
         };
         fetchRestaurantData();
     }, [session, params.id]);
+
+    if (!restaurantData) {
+        return (
+            <div className="h-[700px] flex justify-center items-center">
+                <CircularProgress />
+            </div>
+        );
+    }
 
     return (
         <div className="pl-12 pr-10 w-full h-screen overflow-y-auto">
