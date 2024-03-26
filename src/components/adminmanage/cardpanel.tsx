@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import Card from './card';
 import { mockUser } from '@/mock/user';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import User from '@/types/user';
 
-export default function CardPanel() {
-    const mockData = mockUser;
+export default function CardPanel({data}:{data:Array<User>}) {
+    const mockData = data;
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(10);
 
@@ -24,14 +25,14 @@ export default function CardPanel() {
 
     return (
         <div className="w-full h-screen flex flex-col items-center mt-5">
-            {visibleData.map((item) => (
+            {visibleData.map((item:User) => (
                 <Card
-                    key={item.id}
-                    id={item.id}
+                    key={item.ID}
+                    id={item.ID}
                     name={item.name}
                     role={item.role}
                     email={item.email}
-                    tel={item.tel}
+                    tel={item.telephone}
                     picture={item.picture}
                 />
             ))}
