@@ -19,10 +19,13 @@ const LoginForm = () => {
             password: password,
             redirect: false,
         });
-        console.log(result);
+
         if (result?.status === 200) {
             router.replace('/');
             router.refresh();
+        } 
+        else {
+            alert('Invalid email or password');
         }
     };
 
