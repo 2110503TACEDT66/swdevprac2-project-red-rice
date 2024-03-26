@@ -48,7 +48,7 @@ export default function ReservationPanel({ data }: { data: reservation[] }) {
                             id={key+1}
                             forDelete={item.ID}
                             name={item.restaurant.name}
-                            table={item.table}
+                            table={1}
                             time={item.dateTime.split('T')[1].substring(0, 5)}
                             state={'Pending'}
                             picture={item.restaurant.imageUrl}
