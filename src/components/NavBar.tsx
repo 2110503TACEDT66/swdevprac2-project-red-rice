@@ -89,7 +89,7 @@ const Navbar = () => {
                                         Restaurant
                                     </Link>
                                     <Link href={'/profile'}>
-                                        <div className="relative rounded-full border-4 border-redrice-yellow p-2 text-2xl text-redrice-yellow">
+                                        <div className="relative rounded-full border-4 border-black hover:border-redrice-yellow p-2 text-2xl hover:text-redrice-yellow">
                                             <FaUserAlt />
                                         </div>
                                     </Link>
