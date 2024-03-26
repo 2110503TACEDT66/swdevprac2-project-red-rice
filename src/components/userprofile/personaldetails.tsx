@@ -1,6 +1,7 @@
 import User from "@/types/user";
 
 export default function PersonalDetails({profile}:{profile:any}) {
+    console.log(profile)
     return (
         <div className="w-full md:w-1/3 h-[500px] text-center mr-2 mt-2 rounded-lg flex flex-col shadow-lg border-2">
             <h2 className="m-5 mb-3">Personal Details</h2>
