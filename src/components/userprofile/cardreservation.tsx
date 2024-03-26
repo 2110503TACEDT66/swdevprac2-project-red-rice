@@ -22,10 +22,11 @@ export default function CardReservation({
                     className="object-cover rounded-lg "
                 />
             </div>
-            <div className="w-[200px]  m-3  self-center text-sm">{name}</div>
-            <div className="w-[60%]  relative right-0  m-3 self-center flex flex-row justify-end text-sm">
-                <div className="tablet:w-[200px] m-3 ml-5 self-cente text-sm w-[100px]">
-                    {time}
+            <div className="w-[20%]  m-3  self-center text-sm">{name}</div>
+            <div className="w-[100%]  relative right-0  m-3 self-center flex flex-row justify-end text-sm ml-3">
+                <div className="w-[95%] m-1 self-center flex flex-row text-sm  justify-end  text-center">
+                    <h1 className='mr-5 '>{time.split('T')[1].substring(0, 5)}</h1>
+                    <h1 className=''>{time.split('T')[0]} </h1>
                 </div>
             </div>
         </div>
