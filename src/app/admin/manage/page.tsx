@@ -14,7 +14,9 @@ export default async function AdminManage() {
     const profile =await getusers(session.user.token)
     return (
         <main className="pl-12 pr-10 w-full h-auto overflow-y-auto">
+            <div className='w-[50%] relative left-[8%] '>
             <SubBar text="User Management" />
+            </div>
             <CardPanel data={profile} />
         </main>
     );

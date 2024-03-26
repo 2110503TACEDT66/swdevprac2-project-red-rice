@@ -9,7 +9,7 @@ import axios from 'axios';
 import { register } from '@/lib/auth';
 
 export interface FormData {
-    username: string;
+    name: string;
     email: string;
     telephone: string;
     password: string;
@@ -17,7 +17,7 @@ export interface FormData {
 
 const RegisterForm: React.FC = () => {
     const [formData, setFormData] = useState<FormData>({
-        username: '',
+        name: '',
         email: '',
         telephone: '',
         password: '',
@@ -48,11 +48,11 @@ const RegisterForm: React.FC = () => {
         >
             <div className="flex flex-col space-y-10">
                 <input
-                    name="username"
+                    name="name"
                     className="w-full border-2 border-gray-200 p-3 rounded-lg focus:outline-none focus:border-yellow-500"
                     type="text"
                     placeholder="Full Name"
-                    value={formData.username}
+                    value={formData.name}
                     onChange={handleChange}
                 />
                 <input

@@ -2,7 +2,7 @@ interface User {
     picture: string | undefined;
     email: string;
     ID: string;
-    name: string;
+    name:string;
     password: string;
     role: string;
     telephone: string;

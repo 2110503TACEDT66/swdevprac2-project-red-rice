@@ -13,7 +13,7 @@ export default async function me() {
     }
     const profile =await getme(session.user.token)
     const data =await getReservationByIdUser(session.user.token,profile.ID)
-    
+    console.log(profile)
 
     return (
         <main className="">
