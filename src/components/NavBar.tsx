@@ -8,6 +8,7 @@ import { getme } from '@/lib/auth';
 import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { FiLogOut } from 'react-icons/fi';
+import { FaUserAlt } from 'react-icons/fa';
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [login, setLogin] = useState(false);
@@ -88,13 +89,9 @@ const Navbar = () => {
                                         Restaurant
                                     </Link>
                                     <Link href={'/profile'}>
-                                        <Image
-                                            src={'/img/profile.svg'}
-                                            alt="logo"
-                                            width={50}
-                                            height={50}
-                                            className="relative rounded-full border-4 border-redrice-yellow"
-                                        />
+                                        <div className="relative rounded-full border-4 border-black hover:border-redrice-yellow p-2 text-2xl hover:text-redrice-yellow">
+                                            <FaUserAlt />
+                                        </div>
                                     </Link>
                                     <button
                                         title="Sign Out"

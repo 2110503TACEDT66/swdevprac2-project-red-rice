@@ -7,12 +7,14 @@ import InstagramLogo from '/public/img/instagram.svg';
 import Image from 'next/image';
 import axios from 'axios';
 import { register } from '@/lib/auth';
+import { useRouter } from 'next/navigation';
 
 export interface FormData {
     name: string;
     email: string;
     telephone: string;
     password: string;
+    role: string;
 }
 
 const RegisterForm: React.FC = () => {
@@ -21,8 +23,9 @@ const RegisterForm: React.FC = () => {
         email: '',
         telephone: '',
         password: '',
+        role: 'user',
     });
-
+    
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData((prevState) => ({
@@ -30,12 +33,13 @@ const RegisterForm: React.FC = () => {
             [name]: value,
         }));
     };
-
+    const router = useRouter();
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
             const response = await register(formData);
             console.log('register successful:', response);
+            router.push('/auth/login')
         } catch (error) {
             console.error('Registration error:', error);
         }

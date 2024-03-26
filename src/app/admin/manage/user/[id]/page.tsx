@@ -14,9 +14,9 @@ export default async function profile({ params }: { params: { id: string } }) {
     const profile =await getUserById(session.user.token,params.id)
     const data =await getReservationByIdUser(session.user.token,params.id)
     return (
-        <main className="">
-            <div className='w-[50%] relative left-[8%] '>
-            <SubBar text={profile.name+'`s Profile'} />
+        <main className="pl-12 pr-10 w-full h-screen overflow-y-auto">
+            <div className='w-[50%]  '>
+            <SubBar text={profile.name+"'s Profile"} />
             </div>
             <div className="w-[100%] flex flex-row justify-center ">
                 <CardProfile
