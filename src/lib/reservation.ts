@@ -115,4 +115,44 @@ const deleteReservation = async (token: string, reservationId: number) => {
         throw error;
     }
 };
-export { createReservation, getMyReservations, deleteReservation, getAllResvation, getReservationByIdUser};
+
+const updateReservation = async (token: string, id: string, dateTime: any) => {
+    try {
+
+        const response = await axios.put(
+            `https://redrice-backend-go.onrender.com/api/v1/reservations/${id}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+                body: {
+                    dateTime: dateTime,
+                }
+            }
+        );
+
+        return response.data;
+    } catch (error) {
+        console.error('Update reservation error:', error);
+        throw error;
+    }
+}
+
+const getReservation = async (token: string, id: string) => {
+    try {
+        const response = await axios.get(
+            `https://redrice-backend-go.onrender.com/api/v1/reservations/${id}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+
+        return response.data;
+    } catch (error) {
+        console.error('Get reservation error:', error);
+        throw error;
+    }
+}
+export { createReservation, getMyReservations, deleteReservation, getAllResvation, getReservationByIdUser, updateReservation, getReservation};

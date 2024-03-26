@@ -127,7 +127,7 @@ export default function ReservationCard({
                 >
                     {state}
                 </div>
-                <Link href={`/restaurant/update/${forDelete}`}>
+                <Link href={`/reservation/update/${forDelete}`}>
                     <button className="bg-redrice-blue rounded-full hover:bg-sky-700 flex justify-center items-center text-white text-xl p-3">
                         <RiEditLine />
                     </button>
