@@ -5,6 +5,7 @@ import { reservation } from '../../../interface';
 import { getMyReservations } from '@/lib/reservation';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
+import { CircularProgress } from '@mui/material';
 export default function Reservation() {
     const { data: session } = useSession();
     const [reservationData, setReservations] = useState<reservation[]>();
@@ -19,16 +20,21 @@ export default function Reservation() {
         fetchReservations();
     }, [session]);
 
-    // Handle loading state
-    if (!session || !reservationData) {
-        return <div>Loading...</div>;
-    }
-
     return (
-        <div className="space-y-6">
-            <SubBar text={'Your Reservation'}></SubBar>
-            {reservationData && (
-                <ReservationPanel data={reservationData}></ReservationPanel>
+        <div className="pl-12 pr-10 w-full h-screen overflow-y-auto">
+            {reservationData ? (
+                <div className="space-y-6">
+                    <SubBar text={'Your Reservation'}></SubBar>
+                    {reservationData && (
+                        <ReservationPanel
+                            data={reservationData}
+                        ></ReservationPanel>
+                    )}
+                </div>
+            ) : (
+                <div className="h-[700px] flex justify-center items-center">
+                    <CircularProgress />
+                </div>
             )}
         </div>
     );

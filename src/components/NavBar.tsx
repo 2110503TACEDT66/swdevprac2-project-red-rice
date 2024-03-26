@@ -7,6 +7,7 @@ import { IoClose, IoMenu } from 'react-icons/io5';
 import { getme } from '@/lib/auth';
 import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { FiLogOut } from 'react-icons/fi';
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [login, setLogin] = useState(false);
@@ -86,7 +87,7 @@ const Navbar = () => {
                                     >
                                         Restaurant
                                     </Link>
-                                    <Link href={"/profile"}>
+                                    <Link href={'/profile'}>
                                         <Image
                                             src={'/img/profile.svg'}
                                             alt="logo"
@@ -95,15 +96,18 @@ const Navbar = () => {
                                             className="relative rounded-full border-4 border-redrice-yellow"
                                         />
                                     </Link>
-                                    <button 
+                                    <button
+                                        title="Sign Out"
                                         onClick={handleSignOut}
-                                        className="rounded-md text-xl font-base hover:text-redrice-yellow ease-in duration-300"
-                                    >Sign Out</button>
+                                        className="rounded-lg text-xl lg:text-xl font-semibold hover:text-white bg-redrice-yellow hover:bg-redrice-light-yellow p-2 text-white"
+                                    >
+                                        <FiLogOut />
+                                    </button>
                                 </div>
                             </div>
                         ) : (
                             <Link
-                                href = '/auth/login'
+                                href="/auth/login"
                                 className="font-bold text-white py-3 px-4 bg-redrice-yellow rounded-[1rem]  hover:text-black ease-in duration-300"
                             >
                                 Sign In
@@ -167,6 +171,12 @@ const Navbar = () => {
                         >
                             Restaurant
                         </Link>
+                        <button
+                            onClick={handleSignOut}
+                            className="text-white block px-3 py-2 text-base font-medium  hover:text-black hover:font-bold ease-in duration-300 border-b-2"
+                        >
+                            Sign Out
+                        </button>
                     </div>
                 </div>
             )}

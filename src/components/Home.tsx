@@ -5,16 +5,17 @@ const Home = () => {
     
     return (
         <main
-            className="pl-12 pr-10 w-full h-screen overflow-y-auto flex justify-between flex-wrap bg-cover"
-            style={{ backgroundImage: "url('/img/background.png')" }}
+            className="px-10 w-full lg:h-screen overflow-y-auto flex justify-center flex-wrap bg-cover gap-10 gap-auto max-gap-10"
+            // style={{ backgroundImage: "url('/img/background.png')" }}
         >
             <div className="mt-5 flex justify-start flex-col">
-                <div className="lg:hidden flex justify-center md:ml-14">
+                <div className="lg:hidden flex justify-center mb-10">
                     <Image
-                        src="/img/restaurant.png"
+                        src="/img/restaurant_bg.png"
                         alt="restaurant"
                         width={550}
                         height={550}
+                        className='rounded-[2rem] object-cover shadow-xl'
                     />
                 </div>
                 <h1 className="text-3xl md:text-6xl lg:text-7xl font-bold pb-3 lg:pt-32">
@@ -31,12 +32,13 @@ const Home = () => {
                     Book Reservation Now
                 </Link>
             </div>
-            <div className="hidden lg:block lg:pt-24 h-auto">
+            <div className="hidden lg:block lg:pt-24 h-auto rounded-lg">
                 <Image
-                    src="/img/restaurant.png"
+                    src="/img/restaurant_bg.png"
                     alt="restaurant"
                     width={550}
                     height={550}
+                    className='rounded-[2rem] object-cover shadow-xl'
                 />
             </div>
         </main>
