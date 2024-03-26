@@ -98,9 +98,9 @@ const getMyReservations = async (token: string) => {
     }
 };
 
-const deleteReservation = (token: string, reservationId: number) => {
+const deleteReservation = async (token: string, reservationId: number) => {
     try {
-        const response = axios.delete(
+        const response = await axios.delete(
             `https://redrice-backend-go.onrender.com/api/v1/reservations/${reservationId}`,
             {
                 headers: {
@@ -109,7 +109,7 @@ const deleteReservation = (token: string, reservationId: number) => {
             }
         );
 
-        return response;
+        return response.data;
     } catch (error) {
         console.error('Delete reservation error:', error);
         throw error;
