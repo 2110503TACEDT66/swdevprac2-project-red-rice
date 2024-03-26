@@ -6,6 +6,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/utils/authOption';
 import { getme } from '@/lib/auth';
 import { getReservationByIdUser } from '@/lib/reservation';
+import { CircularProgress } from '@mui/material';
 
 export default async function me() {
     const session = await getServerSession(authOptions);
@@ -14,6 +15,16 @@ export default async function me() {
     }
     const profile = await getme(session.user.token);
     const data = await getReservationByIdUser(session.user.token, profile.ID);
+
+    if (!session) {
+        return (
+            <div className="pl-12 pr-10 w-full h-screen overflow-y-auto">
+                <div className="h-[700px] flex justify-center items-center">
+                    <CircularProgress />
+                </div>
+            </div>
+        );
+    }
 
     return (
         <main className="pl-12 pr-10 w-full h-screen overflow-y-auto ">
