@@ -17,7 +17,10 @@ export default async function me() {
 
     return (
         <main className="">
-            <SubBar text={profile.name} />
+            <div className='w-[50%] relative left-[8%] '>
+            <SubBar text={profile.name+'`s Profile'} />
+            </div>
+            
             <div className="w-[100%] flex flex-row justify-center ">
                 <CardProfile
                     profile={profile}

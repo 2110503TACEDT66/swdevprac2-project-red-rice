@@ -5,6 +5,7 @@ import ConfirmDeleteReserve from '../ConfirmDeleteReserve';
 import { deleteReservation } from '@/lib/reservation';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { RiDeleteBin5Fill } from 'react-icons/ri';
 export default function ReservationCard({
     id,
     name,
@@ -60,7 +61,7 @@ export default function ReservationCard({
         router.push('/reservation/done');
     };
     return (
-        <div className="w-full max-w-5xl mx-auto rounded-lg shadow-md flex flex-col tablet:flex-row items-center p-4 bg-white space-y-4 tablet:space-y-0 tablet:space-x-4">
+        <div className="h-auto w-full rounded-[1rem] shadow-md m-2 flex flex-row py-2 md:py-7 items-center justify-between pr-5 pl-5 border-2 flex-wrap">
             {resultShow && (
                 <ConfirmDeleteReserve
                     restaurant={name}
@@ -68,34 +69,37 @@ export default function ReservationCard({
                     onConfirm={onConfirm}
                 />
             )}
-            <div>ID: {id}</div>
-            <div className="w-16 h-16 relative">
-                <Image
-                    src={picture}
-                    alt="Product Picture"
-                    layout="fill"
-                    className="object-cover rounded-full"
-                />
+            <div className="flex flex-row items-center flex-wrap justify-center gap-5 md:gap-0 mb-5 md:mb-0">
+                <div className='flex flex-row items-center'>
+                    <h1 className="mr-5 md:mr-10">{id}</h1>
+                    <div className="flex flex-row gap-5 md:gap-10 mr-3 md:mr-10 items-center flex-wrap">
+                        <Image
+                            src={picture || '/img/user/user1.png'}
+                            alt="Product Picture"
+                            width={50}
+                            height={50}
+                            className="object-cover rounded-full"
+                        />
+
+                        <h1>{name}</h1>
+                    </div>
+                </div>
+                <div className="flex flex-row gap-10 items-center justify-center">
+                    <h1>{table} Tables</h1>
+                    <h1>{time}</h1>
+                </div>
             </div>
-            <div className="text-lg font-semibold">{name}</div>
-            <div className="flex flex-1 justify-between items-center text-sm tablet:text-base">
-                <div>{table} Tables</div>
-                <div>{time}</div>
+            <div className="w-full md:w-auto flex justify-center items-center text-sm gap-3">
                 <div
-                    className={`${getBackgroundColor()} px-2 py-1 text-white rounded-full font-semibold`}
+                    className={`${getBackgroundColor()} text-white font-semibold rounded-2xl px-10 py-2`}
                 >
                     {state}
                 </div>
                 <div
-                    className="w-8 h-8 bg-red-500 rounded-full hover:bg-red-700 flex justify-center items-center"
+                    className="bg-redrice-red rounded-full hover:bg-red-700 flex justify-center items-center text-white text-xl p-3"
                     onClick={() => dispatchShow({ type: 'show' })}
                 >
-                    <Image
-                        src="/img/component/close-500.png"
-                        alt="Close"
-                        width={20}
-                        height={20}
-                    />
+                    <RiDeleteBin5Fill />
                 </div>
             </div>
         </div>
