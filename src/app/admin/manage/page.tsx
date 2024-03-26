@@ -25,7 +25,7 @@ export default async function AdminManage() {
 
     return (
         <main className="pl-12 pr-10 w-full h-auto overflow-y-auto">
-            <div className="w-[50%] relative left-[8%] ">
+            <div className="w-[50%] relative">
                 <SubBar text="User Management" />
             </div>
             <CardPanel data={profile} />
