@@ -57,6 +57,10 @@ export default function ReservationCard({
         }
         router.push('/reservation/done');
     };
+
+    const hour =(parseInt(time.split(':')[0])+7)%24
+    const minute =parseInt(time.split(':')[1])
+    const newDate = ("00"+hour.toString()).slice(-2)+":"+("00"+minute.toString()).slice(-2)
     return (
         <div className="h-auto w-full rounded-[1rem] shadow-md m-2 flex flex-row py-2 md:py-7 items-center justify-between pr-5 pl-5 border-2 flex-wrap">
             {resultShow && (
@@ -83,7 +87,7 @@ export default function ReservationCard({
                 </div>
                 <div className="flex flex-row gap-10 items-center justify-center">
                     <h1>{table} Tables</h1>
-                    <h1>{time}</h1>
+                    <h1>{newDate}</h1>
                 </div>
             </div>
             <div className="w-full md:w-auto flex justify-center items-center text-sm gap-3">

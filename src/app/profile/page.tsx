@@ -27,7 +27,7 @@ export default async function me() {
     }
 
     return (
-        <main className="pl-12 pr-10 w-full h-screen overflow-y-auto ">
+        <main className="pl-12 pr-12  overflow-y-auto ">
             <SubBar text={`${profile.name}'s Profile`} />
 
             <div className="w-full flex flex-row justify-center">

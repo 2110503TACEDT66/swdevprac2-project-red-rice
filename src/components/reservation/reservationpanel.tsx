@@ -21,6 +21,8 @@ export default function ReservationPanel({ data }: { data: reservation[] }) {
 
     const isPreviousDisabled = page === 1;
     const isNextDisabled = page === totalPages;
+
+
     return (
         <>
             {data.length === 0 ? (
